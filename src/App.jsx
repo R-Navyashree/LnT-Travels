@@ -2,12 +2,10 @@ import React from 'react';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import FeatureStrip from './components/FeatureStrip';
 import About from './components/About';
 import Services from './components/Services';
 import Destinations from './components/Destinations';
 import Vehicles from './components/Vehicles';
-import WhyChooseUs from './components/WhyChooseUs';
 import CTA from './components/CTA';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -20,14 +18,12 @@ export default function App() {
         <TopBar />
         <Navbar />
       </div>
-      <main style={{ paddingTop: '108px' }}>
+      <main className="pt-[106px] md:pt-[110px]">
         <Hero />
-        <FeatureStrip />
         <About />
         <Services />
         <Destinations />
         <Vehicles />
-        <WhyChooseUs />
         <CTA />
         <Contact />
       </main>

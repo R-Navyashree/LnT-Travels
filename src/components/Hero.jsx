@@ -1,151 +1,125 @@
 import React from 'react';
-import { FaWhatsapp, FaPhone, FaCheckCircle, FaShieldAlt, FaClock, FaCar } from 'react-icons/fa';
+import { FaWhatsapp, FaPhone, FaShieldAlt, FaUserTie, FaClock, FaCar } from 'react-icons/fa';
+import { MdSupportAgent, MdAccessTime, MdCleaningServices } from 'react-icons/md';
 import { WHATSAPP_NUMBER, BOOKING_MSG } from '../constants';
+
+const features = [
+  { icon: <FaShieldAlt size={16} />,        title: 'Safe & Reliable',    desc: 'Verified drivers and insured rides every trip.' },
+  { icon: <FaCar size={16} />,              title: 'Comfortable Rides',  desc: 'Premium AC cabins and smooth experience.' },
+  { icon: <MdAccessTime size={18} />,       title: 'Always On Time',     desc: 'Your schedule is our responsibility.' },
+  { icon: <MdSupportAgent size={18} />,     title: '24×7 Service',       desc: 'Always here via WhatsApp or call.' },
+  { icon: <FaUserTie size={16} />,          title: 'Pro Drivers',        desc: 'Background-verified, 5+ years experience.' },
+  { icon: <MdCleaningServices size={18} />, title: 'Clean Vehicles',     desc: 'Sanitized before every trip.' },
+  { icon: <FaClock size={16} />,            title: 'Affordable Pricing', desc: 'Flat rates, zero hidden charges.' },
+];
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex items-center overflow-hidden"
-      style={{ background: '#030712', minHeight: 'calc(100vh - 42px)' }}
+      className="overflow-hidden"
+      style={{ background: '#0D1B2A' }}
     >
-      {/* Full-screen cinematic background */}
-      <div className="absolute inset-0">
+      {/* Car image — full background, behind content */}
+      <div className="absolute inset-0 pointer-events-none">
         <img
           src="/Eritiga.png"
-          alt="LnT Travels Maruti Suzuki Ertiga"
-          className="w-full h-full object-contain"
-          style={{ opacity: 0.55 }}
+          alt="LnT Travels Ertiga"
+          className="w-full h-full"
+          style={{ objectFit: 'contain', objectPosition: 'center right', opacity: 0.06 }}
         />
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(110deg, #030712 40%, rgba(3,7,18,0.82) 65%, rgba(3,7,18,0.3) 100%)',
-        }} />
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(to top, #030712 0%, transparent 45%)',
-        }} />
       </div>
 
-      {/* Royal blue atmospheric glow */}
-      <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(30,58,138,0.18) 0%, transparent 70%)', filter: 'blur(60px)' }} />
-      <div className="absolute -bottom-20 left-1/4 w-[500px] h-[400px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(251,191,36,0.06) 0%, transparent 70%)', filter: 'blur(50px)' }} />
+      {/* ── Top part: text only (full width) ── */}
+      <div className="container-max px-4 md:px-6 relative">
+        <div className="grid lg:grid-cols-2 items-center gap-0 pt-6 md:pt-8 lg:pt-10">
 
-      <div className="container-max px-4 md:px-6 w-full relative z-10 py-20 lg:py-32">
-        <div className="max-w-2xl">
+          {/* Left: text + CTAs */}
+          <div className="text-center lg:text-left pb-5 lg:pb-8 relative z-10">
+            {/* Subtle bg pattern */}
+            <div className="absolute -top-20 -left-20 w-96 h-96 pointer-events-none hidden lg:block"
+              style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)' }} />
 
-       
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full mb-5"
+              style={{ background: 'rgba(249,115,22,0.15)', border: '1px solid rgba(249,115,22,0.3)', color: '#FB923C' }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+              Premium Tours &amp; Travels · Karnataka
+            </div>
 
-          {/* Headline */}
-          <h1
-            className="font-heading font-black leading-[1.02] mb-6"
-            style={{ fontSize: 'clamp(2.2rem, 5vw, 4.2rem)', color: '#FFFFFF', letterSpacing: '-1.5px' }}
-          >
-            Travel Beyond
-            <br />
-            <span style={{
-              background: 'linear-gradient(135deg, #FBBF24 0%, #F59E0B 40%, #FCD34D 80%, #FBBF24 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>
-              Destinations
-            </span>
-          </h1>
+            <h1 className="font-heading font-black leading-[1.05] mb-3"
+              style={{ fontSize: 'clamp(1.8rem, 4.5vw, 3.6rem)', color: '#FFFFFF', letterSpacing: '-1.5px' }}>
+              Travel Beyond
+              <br />
+              <span className="orange-gradient">Destinations</span>
+            </h1>
 
-          
+            <p className="font-semibold mb-2" style={{ fontSize: 'clamp(0.82rem, 1.8vw, 0.98rem)', color: '#CBD5E1' }}>
+              Premium Tours &amp; Travels Across Karnataka
+            </p>
+            <p className="leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
+              style={{ fontSize: 'clamp(0.82rem, 1.6vw, 0.9rem)', color: '#94A3B8', lineHeight: '1.8' }}>
+              Safe, comfortable, and memorable journeys — business travel, family vacations, airport
+              transfers, or outstation getaways. Professional drivers and well-maintained vehicles, 24×7.
+            </p>
 
-          {/* Description */}
-          <p className="text-sm md:text-base leading-relaxed mb-10 max-w-xl" style={{ color: '#475569', lineHeight: '1.5' }}>
-            At LnT Travels, we make every journey safe, comfortable, and memorable. Whether
-            you're travelling for business, a family vacation, airport transfer, or an outstation
-            getaway, our professional drivers and well-maintained vehicles ensure a smooth experience
-            from start to finish.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4 mb-14">
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${BOOKING_MSG}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 font-bold text-base px-9 py-4 rounded-full transition-all duration-300"
-              style={{ background: '#FBBF24', color: '#0F172A', boxShadow: '0 8px 32px rgba(251,191,36,0.38)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#FCD34D';
-                e.currentTarget.style.boxShadow = '0 20px 52px rgba(251,191,36,0.55)';
-                e.currentTarget.style.transform = 'translateY(-3px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#FBBF24';
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(251,191,36,0.38)';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              <FaWhatsapp size={20} /> Book on WhatsApp
-            </a>
-            <a
-              href="tel:+919113052138"
-              className="flex items-center gap-3 font-bold text-base px-9 py-4 rounded-full transition-all duration-300"
-              style={{
-                background: 'rgba(255,255,255,0.05)',
-                border: '1.5px solid rgba(255,255,255,0.18)',
-                color: '#E2E8F0',
-                backdropFilter: 'blur(12px)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#FBBF24';
-                e.currentTarget.style.color = '#FBBF24';
-                e.currentTarget.style.background = 'rgba(251,191,36,0.08)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)';
-                e.currentTarget.style.color = '#E2E8F0';
-                e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              <FaPhone size={16} /> Call Now
-            </a>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${BOOKING_MSG}`}
+                target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2.5 font-bold text-sm px-7 py-3.5 rounded-xl transition-all duration-300 min-h-[50px] text-white"
+                style={{ background: '#F97316', boxShadow: '0 6px 24px rgba(249,115,22,0.35)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#EA580C'; e.currentTarget.style.boxShadow = '0 12px 36px rgba(249,115,22,0.45)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#F97316'; e.currentTarget.style.boxShadow = '0 6px 24px rgba(249,115,22,0.35)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                <FaWhatsapp size={18} /> Book on WhatsApp
+              </a>
+              <a href="tel:+919113052138"
+                className="flex items-center justify-center gap-2.5 font-bold text-sm px-7 py-3.5 rounded-xl transition-all duration-300 min-h-[50px] text-white"
+                style={{ background: '#2563EB', boxShadow: '0 6px 20px rgba(37,99,235,0.3)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#1D4ED8'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#2563EB'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                <FaPhone size={15} /> Call Now
+              </a>
+            </div>
           </div>
 
-          {/* Feature badges */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {[
-              { icon: <FaClock size={16} />, label: '24×7 Service' },
-              { icon: <FaCheckCircle size={16} />, label: 'Professional Drivers' },
-              { icon: <FaCar size={16} />, label: 'Clean Vehicles' },
-              { icon: <FaShieldAlt size={16} />, label: 'Affordable Pricing' },
-            ].map((b) => (
-              <div
-                key={b.label}
-                className="flex items-center gap-2 px-3 py-3 rounded-2xl transition-all duration-300"
-                style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.07)',
-                  backdropFilter: 'blur(10px)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(251,191,36,0.08)';
-                  e.currentTarget.style.borderColor = 'rgba(251,191,36,0.22)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)';
-                }}
-              >
-                <span style={{ color: '#FBBF24' }}>{b.icon}</span>
-                <span className="text-xs font-semibold" style={{ color: '#94A3B8' }}>{b.label}</span>
+          
+        </div>
+      </div>
+
+      {/* ── Features strip — full width below ── */}
+      <div className="container-max px-4 md:px-6 pb-8 md:pb-10">
+        <div style={{
+          background: 'rgba(255,255,255,0.05)',
+          border: '1px solid rgba(255,255,255,0.1)',
+          borderRadius: '20px',
+          padding: 'clamp(1rem, 2.5vw, 1.4rem)',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.2)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          {/* Orange top accent */}
+          <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(to right, #F97316, #EA580C, #F97316)' }} />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
+            {features.map((f) => (
+              <div key={f.title}
+                className="flex items-start gap-2.5 p-3 rounded-2xl transition-all duration-300 group cursor-default"
+                style={{ background: '#F9FAFB', border: '1px solid #F3F4F6' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(249,115,22,0.05)'; e.currentTarget.style.borderColor = 'rgba(249,115,22,0.2)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#F9FAFB'; e.currentTarget.style.borderColor = '#F3F4F6'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: 'rgba(249,115,22,0.1)', color: '#F97316', border: '1px solid rgba(249,115,22,0.15)' }}>
+                  {f.icon}
+                </div>
+                <div>
+                  <p className="font-heading font-semibold" style={{ fontSize: '0.78rem', color: '#111827', marginBottom: '2px' }}>{f.title}</p>
+                  <p style={{ fontSize: '0.68rem', color: '#9CA3AF', lineHeight: '1.45' }}>{f.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, #030712, transparent)' }} />
     </section>
   );
 }
