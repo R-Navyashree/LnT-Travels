@@ -26,7 +26,7 @@ export default function About() {
         <div className="text-center mb-10 md:mb-12">
           <span className="section-pill">About LnT Travels</span>
           <h2 className="section-title">Your Travel, <span className="orange-gradient">Our Priority</span></h2>
-          <p className="section-subtitle mx-auto">Trusted by thousands of travellers across Karnataka since 2016.</p>
+          <p className="section-subtitle mx-auto">Trusted by thousands of travellers across Karnataka.</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">

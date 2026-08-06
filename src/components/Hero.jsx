@@ -67,9 +67,9 @@ export default function Hero() {
               <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${BOOKING_MSG}`}
                 target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2.5 font-bold text-sm px-7 py-3.5 rounded-xl transition-all duration-300 min-h-[50px] text-white"
-                style={{ background: '#F97316', boxShadow: '0 6px 24px rgba(249,115,22,0.35)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = '#EA580C'; e.currentTarget.style.boxShadow = '0 12px 36px rgba(249,115,22,0.45)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = '#F97316'; e.currentTarget.style.boxShadow = '0 6px 24px rgba(249,115,22,0.35)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                style={{ background: '#25D366', boxShadow: '0 6px 24px rgba(37,211,102,0.35)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#20BA5A'; e.currentTarget.style.boxShadow = '0 12px 36px rgba(37,211,102,0.45)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#25D366'; e.currentTarget.style.boxShadow = '0 6px 24px rgba(37,211,102,0.35)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                 <FaWhatsapp size={18} /> Book on WhatsApp
               </a>
               <a href="tel:+919113052138"
