@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lnt-travels.vercel.app/sitemap.xml
