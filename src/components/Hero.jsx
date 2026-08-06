@@ -44,7 +44,7 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full mb-5"
               style={{ background: 'rgba(249,115,22,0.15)', border: '1px solid rgba(249,115,22,0.3)', color: '#FB923C' }}>
               <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-              Premium Tours &amp; Travels · Karnataka
+              Bangalore's Trusted Service
             </div>
 
             <h1 className="font-heading font-black leading-[1.05] mb-3"
@@ -55,7 +55,7 @@ export default function Hero() {
             </h1>
 
             <p className="font-semibold mb-2" style={{ fontSize: 'clamp(0.82rem, 1.8vw, 0.98rem)', color: '#CBD5E1' }}>
-              Premium Tours &amp; Travels Across Karnataka
+              " Premium Tours &amp; Travels Across Karnataka "
             </p>
             <p className="leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
               style={{ fontSize: 'clamp(0.82rem, 1.6vw, 0.9rem)', color: '#94A3B8', lineHeight: '1.8' }}>
