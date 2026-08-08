@@ -2,6 +2,7 @@ import React from 'react';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import TrustBanner from './components/TrustBanner';
 import About from './components/About';
 import Services from './components/Services';
 import Destinations from './components/Destinations';
@@ -20,6 +21,7 @@ export default function App() {
       </div>
       <main className="pt-[106px] md:pt-[110px]">
         <Hero />
+        <TrustBanner />
         <About />
         <Services />
         <Destinations />

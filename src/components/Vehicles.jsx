@@ -113,6 +113,9 @@ export default function Vehicles() {
           <p className="section-subtitle mx-auto" style={{ color: '#94A3B8' }}>
             Well-maintained vehicles for every journey — hover on desktop to see them in action.
           </p>
+          <p className="text-sm font-medium mt-2" style={{ color: '#94A3B8' }}>
+            🚖 All vehicles are licensed <span style={{ color: '#FCD34D', fontWeight: 700 }}>Yellow Board commercial taxis</span> operating from Bangalore.
+          </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {vehicles.map((v) => <VehicleCard key={v.id} v={v} />)}

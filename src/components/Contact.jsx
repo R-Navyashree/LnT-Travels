@@ -7,7 +7,7 @@ const contactItems = [
   { icon: <FaPhone size={18} />, label: 'Call Us', value: '+91 9113052138', href: 'tel:+919113052138', color: '#2563EB' },
   { icon: <FaWhatsapp size={18} />, label: 'WhatsApp', value: '+91 9113052138', href: `https://wa.me/${WHATSAPP_NUMBER}?text=${BOOKING_MSG}`, color: '#10B981' },
   { icon: <FaEnvelope size={18} />, label: 'Email', value: EMAIL, href: `mailto:${EMAIL}`, color: '#2563EB' },
-  { icon: <FaMapMarkerAlt size={18} />, label: 'Location', value: 'Bangalore, Karnataka', href: '#', color: '#F97316' },
+  { icon: <FaMapMarkerAlt size={18} />, label: 'Service Area', value: 'Bangalore, Karnataka — Yellow Board Taxi', href: '#', color: '#F97316' },
 ];
 
 export default function Contact() {

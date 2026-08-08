@@ -47,7 +47,22 @@ export default function Hero() {
               Bangalore's Trusted Service
             </div>
 
-            <h1 className="font-heading font-black leading-[1.05] mb-3"
+            {/* ── Trust badges ── */}
+        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-5">
+          {[
+            { icon: '🚖', text: 'Yellow Board Vehicles' },
+            { icon: '📍', text: 'Bangalore Based' },
+            { icon: '✓', text: 'Professional Drivers' },
+          ].map((b) => (
+            <div key={b.text}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
+              style={{ background: 'rgba(251,191,36,0.12)', border: '1px solid rgba(251,191,36,0.25)', color: '#FCD34D' }}>
+              <span>{b.icon}</span> {b.text}
+            </div>
+          ))}
+        </div>
+
+        <h1 className="font-heading font-black leading-[1.05] mb-3"
               style={{ fontSize: 'clamp(1.8rem, 4.5vw, 3.6rem)', color: '#FFFFFF', letterSpacing: '-1.5px' }}>
               Travel Beyond
               <br />

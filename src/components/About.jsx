@@ -69,6 +69,9 @@ export default function About() {
               across Karnataka. Our commitment to punctuality and safety makes us the preferred
               travel partner for individuals, families, and businesses.
             </p>
+            <p className="text-sm font-semibold px-4 py-3 rounded-xl" style={{ color: '#92400E', background: 'rgba(251,191,36,0.1)', border: '1px solid rgba(251,191,36,0.25)' }}>
+              🚖 We operate exclusively with licensed <strong>Yellow Board commercial vehicles</strong> — ensuring safe, legal, and professional transportation across Bangalore.
+            </p>
             <ul className="space-y-3 pt-1">
               {highlights.map((h) => (
                 <li key={h} className="flex items-start gap-2.5 text-sm font-medium" style={{ color: '#374151' }}>
