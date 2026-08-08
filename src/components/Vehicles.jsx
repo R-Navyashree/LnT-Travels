@@ -51,7 +51,7 @@ function VehicleCard({ v }) {
         <div className="relative overflow-hidden flex-shrink-0"
           style={{ height: '200px', background: '#0a1628', borderRadius: '20px 20px 0 0', cursor: 'pointer' }}
           onClick={() => setModalOpen(true)}>
-          <img src={v.image} alt={v.name} loading="lazy"
+          <img src={v.image} alt={`LnT Travels ${v.name} cab in Bangalore`} loading="lazy"
             className="absolute inset-0 w-full h-full active:brightness-90"
             style={{ opacity: hovered ? 0 : 1, transition: 'opacity 0.35s ease', zIndex: 2, objectFit: 'contain', objectPosition: 'center', transform: 'scale(1.12)', transformOrigin: 'center' }} />
           <video ref={videoRef} preload="metadata" muted loop playsInline

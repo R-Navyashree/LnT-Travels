@@ -64,13 +64,13 @@ export default function Hero() {
 
         <h1 className="font-heading font-black leading-[1.05] mb-3"
               style={{ fontSize: 'clamp(1.8rem, 4.5vw, 3.6rem)', color: '#FFFFFF', letterSpacing: '-1.5px' }}>
-              Travel Beyond
+              LnT Travels —
               <br />
-              <span className="orange-gradient">Destinations</span>
+              <span className="orange-gradient">Cab Service in Bangalore</span>
             </h1>
 
             <p className="font-semibold mb-2" style={{ fontSize: 'clamp(0.82rem, 1.8vw, 0.98rem)', color: '#CBD5E1' }}>
-              " Premium Tours &amp; Travels Across Karnataka "
+              LnT Travels — Premium Cab Service in Bangalore
             </p>
             <p className="leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
               style={{ fontSize: 'clamp(0.82rem, 1.6vw, 0.9rem)', color: '#94A3B8', lineHeight: '1.8' }}>
