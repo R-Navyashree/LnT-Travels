@@ -34,7 +34,7 @@ function Inp({ type = 'text', value, onChange, placeholder, error, inputMode }) 
 }
 
 function Lbl({ children }) {
-  return <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1 block">{children} <span className="text-yellow-400">*</span></label>;
+  return <label className="text-[10px] font-bold uppercase tracking-wider text-gray-700 mb-1 block">{children} <span className="text-yellow-400">*</span></label>;
 }
 
 /* ── Booking form (state + WhatsApp logic untouched) ─── */
