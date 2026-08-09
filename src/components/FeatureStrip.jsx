@@ -9,34 +9,36 @@ const features = [
 
 export default function FeatureStrip() {
   return (
-    <section style={{ background: '#030712', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-      <div className="container-max px-4 md:px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <section style={{ background: '#FFFFFF', borderTop: '1px solid #F1F5F9', borderBottom: '1px solid #F1F5F9' }}>
+      <div className="container-max py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {features.map((f) => (
             <div key={f.title}
               className="group flex items-start gap-4 p-6 rounded-2xl transition-all duration-300 cursor-default"
               style={{
-                background: 'rgba(17,24,39,0.6)',
-                border: '1px solid rgba(255,255,255,0.06)',
-                backdropFilter: 'blur(12px)',
+                background: '#FAFAFA',
+                border: '1px solid #F1F5F9',
+                boxShadow: '0 1px 4px rgba(15,23,42,0.04)',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = 'rgba(251,191,36,0.2)';
-                e.currentTarget.style.background = 'rgba(17,24,39,0.9)';
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(251,191,36,0.08)';
+                e.currentTarget.style.background = '#FFFFFF';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(251,191,36,0.08)';
+                e.currentTarget.style.transform = 'translateY(-3px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
-                e.currentTarget.style.background = 'rgba(17,24,39,0.6)';
-                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.borderColor = '#F1F5F9';
+                e.currentTarget.style.background = '#FAFAFA';
+                e.currentTarget.style.boxShadow = '0 1px 4px rgba(15,23,42,0.04)';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}>
               <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                style={{ background: 'rgba(251,191,36,0.1)', color: '#FBBF24', border: '1px solid rgba(251,191,36,0.15)' }}>
+                style={{ background: 'rgba(251,191,36,0.08)', color: '#FBBF24', border: '1px solid rgba(251,191,36,0.15)' }}>
                 {f.icon}
               </div>
               <div>
-                <h3 className="font-heading font-bold text-sm mb-1" style={{ color: '#F1F5F9' }}>{f.title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: '#475569' }}>{f.desc}</p>
+                <h3 className="font-heading font-bold text-sm mb-1" style={{ color: '#0F172A' }}>{f.title}</h3>
+                <p className="text-xs leading-relaxed" style={{ color: '#64748B' }}>{f.desc}</p>
               </div>
             </div>
           ))}
@@ -44,4 +46,4 @@ export default function FeatureStrip() {
       </div>
     </section>
   );
-}  
+}

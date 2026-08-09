@@ -1,354 +1,226 @@
 import React, { useState } from 'react';
-import { FaWhatsapp, FaPhone, FaShieldAlt, FaUserTie, FaClock, FaCar } from 'react-icons/fa';
-import { MdSupportAgent, MdAccessTime, MdCleaningServices } from 'react-icons/md';
+import { MessageCircle, Phone, ChevronDown, Shield } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../constants';
 
-const features = [
-  { icon: <FaShieldAlt size={16} />,        title: 'Safe & Reliable',    desc: 'Verified drivers and insured rides every trip.' },
-  { icon: <FaCar size={16} />,              title: 'Comfortable Rides',  desc: 'Premium AC cabins and smooth experience.' },
-  { icon: <MdAccessTime size={18} />,       title: 'Always On Time',     desc: 'Your schedule is our responsibility.' },
-  { icon: <MdSupportAgent size={18} />,     title: '24×7 Service',       desc: 'Always here via WhatsApp or call.' },
-  { icon: <FaUserTie size={16} />,          title: 'Pro Drivers',        desc: 'Background-verified, 5+ years experience.' },
-  { icon: <MdCleaningServices size={18} />, title: 'Clean Vehicles',     desc: 'Sanitized before every trip.' },
-  { icon: <FaClock size={16} />,            title: 'Affordable Pricing', desc: 'Flat rates, zero hidden charges.' },
-];
+const VEHICLE_TYPES = ['Sedan', 'SUV', 'MUV', 'Hatchback', 'Any Vehicle'];
+const TRIP_TYPES    = ['Airport Transfer', 'Local Rental', 'One Way', 'Outstation', 'Round Trip'];
 
-const VEHICLE_OPTIONS = ['Sedan', 'SUV', 'MUV', 'Hatchback', 'Any Vehicle'];
-const TRIP_TYPES = ['Airport Transfer', 'Local Rental', 'One Way', 'Outstation', 'Round Trip'];
+function validatePhone(raw) {
+  let n = raw.replace(/[\s\-]/g, '');
+  if (n.startsWith('+91')) n = n.slice(3);
+  else if (n.startsWith('91') && n.length === 12) n = n.slice(2);
+  return /^[6-9]\d{9}$/.test(n);
+}
 
-/* ── Shared input style ── */
-const inputStyle = {
-  width: '100%',
-  padding: '10px 12px',
-  borderRadius: '10px',
-  border: '1.5px solid #E5E7EB',
-  fontSize: '13px',
-  color: '#111827',
-  background: '#FFFFFF',
-  outline: 'none',
-  transition: 'border-color 0.2s',
-  fontFamily: 'inherit',
-};
-
-function FormField({ label, required, children }) {
+function Sel({ value, onChange, error, children, placeholder }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-      <label style={{ fontSize: '11px', fontWeight: 700, color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-        {label}{required && <span style={{ color: '#F97316', marginLeft: '2px' }}>*</span>}
-      </label>
-      {children}
+    <div className="relative">
+      <select value={value} onChange={onChange}
+        className={`form-input appearance-none pr-8 ${error ? 'error' : ''}`}>
+        <option value="">{placeholder}</option>
+        {children}
+      </select>
+      <ChevronDown size={13} className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" />
     </div>
   );
 }
 
+function Inp({ type = 'text', value, onChange, placeholder, error, inputMode }) {
+  return (
+    <input type={type} inputMode={inputMode} value={value} onChange={onChange}
+      placeholder={placeholder}
+      className={`form-input ${error ? 'error' : ''}`} />
+  );
+}
+
+function Lbl({ children }) {
+  return <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1 block">{children} <span className="text-yellow-400">*</span></label>;
+}
+
+/* ── Booking form (state + WhatsApp logic untouched) ─── */
 function BookingForm() {
-  const [form, setForm] = useState({
-    pickup: '', drop: '', date: '', time: '',
-    tripType: '', passengers: '', vehicle: '', name: '', phone: '',
-  });
-  const [errors, setErrors] = useState({});
-  const [focused, setFocused] = useState('');
+  const [f, setF] = useState({ pickup:'', drop:'', date:'', time:'', tripType:'', passengers:'', vehicle:'', name:'', phone:'' });
+  const [err, setErr] = useState({});
+  const set = (k, v) => setF(p => ({ ...p, [k]: v }));
 
-  const update = (k, v) => setForm(f => ({ ...f, [k]: v }));
-
-  function validatePhone(raw) {
-    let n = raw.replace(/[\s\-]/g, '');
-    if (n.startsWith('+91')) n = n.slice(3);
-    else if (n.startsWith('91') && n.length === 12) n = n.slice(2);
-    return /^[6-9]\d{9}$/.test(n);
-  }
-
-  function validate() {
-    const e = {};
-    if (!form.pickup.trim()) e.pickup = true;
-    if (!form.drop.trim()) e.drop = true;
-    if (!form.date) e.date = true;
-    if (!form.time) e.time = true;
-    if (!form.tripType) e.tripType = true;
-    if (!form.passengers) e.passengers = true;
-    if (!form.vehicle) e.vehicle = true;
-    if (!form.name.trim()) e.name = true;
-    if (!form.phone.trim() || !validatePhone(form.phone)) e.phone = true;
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  }
-
-  function handleSubmit(e) {
+  function submit(e) {
     e.preventDefault();
-    if (!validate()) return;
-    const msg = `Hello LnT Travels, I would like to book a cab.
+    const e2 = {};
+    if (!f.pickup.trim())        e2.pickup     = true;
+    if (!f.drop.trim())          e2.drop       = true;
+    if (!f.date)                 e2.date       = true;
+    if (!f.time)                 e2.time       = true;
+    if (!f.tripType)             e2.tripType   = true;
+    if (!f.passengers)           e2.passengers = true;
+    if (!f.vehicle)              e2.vehicle    = true;
+    if (!f.name.trim())          e2.name       = true;
+    if (!validatePhone(f.phone)) e2.phone      = true;
+    setErr(e2);
+    if (Object.keys(e2).length) return;
 
-Pickup Location  : ${form.pickup}
-Drop Location    : ${form.drop}
-Travel Date      : ${form.date}
-Travel Time      : ${form.time}
-Trip Type        : ${form.tripType}
-Passengers       : ${form.passengers}
-Preferred Vehicle: ${form.vehicle}
-Name             : ${form.name}
-Phone            : ${form.phone}
+    const msg =
+`Hello LnT Travels, I would like to book a cab.
+
+Pickup Location  : ${f.pickup}
+Drop Location    : ${f.drop}
+Travel Date      : ${f.date}
+Travel Time      : ${f.time}
+Trip Type        : ${f.tripType}
+Passengers       : ${f.passengers}
+Preferred Vehicle: ${f.vehicle}
+Name             : ${f.name}
+Phone            : ${f.phone}
 
 Please share the fare and confirm availability.`;
-
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   }
 
-  const inp = (key) => ({
-    ...inputStyle,
-    borderColor: errors[key] ? '#EF4444' : focused === key ? '#F97316' : '#E5E7EB',
-    boxShadow: focused === key ? '0 0 0 3px rgba(249,115,22,0.12)' : 'none',
-  });
-
   return (
-    <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-      {/* Row 1 */}
+    <form onSubmit={submit} noValidate className="flex flex-col gap-3">
       <div className="grid grid-cols-2 gap-3">
-        <FormField label="Pickup Location" required>
-          <input type="text" placeholder="e.g. Jayanagar" value={form.pickup}
-            onChange={e => update('pickup', e.target.value)}
-            onFocus={() => setFocused('pickup')} onBlur={() => setFocused('')}
-            style={inp('pickup')} />
-        </FormField>
-        <FormField label="Drop Location" required>
-          <input type="text" placeholder="e.g. Airport" value={form.drop}
-            onChange={e => update('drop', e.target.value)}
-            onFocus={() => setFocused('drop')} onBlur={() => setFocused('')}
-            style={inp('drop')} />
-        </FormField>
+        <div><Lbl>Pickup</Lbl><Inp value={f.pickup} onChange={e=>set('pickup',e.target.value)} placeholder="From..." error={err.pickup} /></div>
+        <div><Lbl>Drop</Lbl><Inp value={f.drop} onChange={e=>set('drop',e.target.value)} placeholder="To..." error={err.drop} /></div>
       </div>
-
-      {/* Row 2 */}
       <div className="grid grid-cols-2 gap-3">
-        <FormField label="Travel Date" required>
-          <input type="date" value={form.date}
-            onChange={e => update('date', e.target.value)}
-            onFocus={() => setFocused('date')} onBlur={() => setFocused('')}
-            style={inp('date')} />
-        </FormField>
-        <FormField label="Travel Time" required>
-          <input type="time" value={form.time}
-            onChange={e => update('time', e.target.value)}
-            onFocus={() => setFocused('time')} onBlur={() => setFocused('')}
-            style={inp('time')} />
-        </FormField>
+        <div><Lbl>Date</Lbl><Inp type="date" value={f.date} onChange={e=>set('date',e.target.value)} error={err.date} /></div>
+        <div><Lbl>Time</Lbl><Inp type="time" value={f.time} onChange={e=>set('time',e.target.value)} error={err.time} /></div>
       </div>
-
-      {/* Row 3 */}
       <div className="grid grid-cols-2 gap-3">
-        <FormField label="Trip Type" required>
-          <select value={form.tripType} onChange={e => update('tripType', e.target.value)}
-            onFocus={() => setFocused('tripType')} onBlur={() => setFocused('')}
-            style={inp('tripType')}>
-            <option value="">Select...</option>
-            {TRIP_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
-          </select>
-        </FormField>
-        <FormField label="Passengers" required>
-          <select value={form.passengers} onChange={e => update('passengers', e.target.value)}
-            onFocus={() => setFocused('passengers')} onBlur={() => setFocused('')}
-            style={inp('passengers')}>
-            <option value="">Select...</option>
-            {[1,2,3,4,5,6,7,8,9,10,11,12].map(n => <option key={n} value={n}>{n}</option>)}
-          </select>
-        </FormField>
+        <div>
+          <Lbl>Trip Type</Lbl>
+          <Sel value={f.tripType} onChange={e=>set('tripType',e.target.value)} error={err.tripType} placeholder="Select...">
+            {TRIP_TYPES.map(t=><option key={t} value={t}>{t}</option>)}
+          </Sel>
+        </div>
+        <div>
+          <Lbl>Passengers</Lbl>
+          <Sel value={f.passengers} onChange={e=>set('passengers',e.target.value)} error={err.passengers} placeholder="No.">
+            {[1,2,3,4,5,6,7,8,9,10,11,12].map(n=><option key={n} value={n}>{n}</option>)}
+          </Sel>
+        </div>
       </div>
-
-      {/* Row 4 — Vehicle type full width */}
-      <FormField label="Preferred Vehicle Type" required>
-        <select value={form.vehicle} onChange={e => update('vehicle', e.target.value)}
-          onFocus={() => setFocused('vehicle')} onBlur={() => setFocused('')}
-          style={inp('vehicle')}>
-          <option value="">Select Vehicle Type</option>
-          {VEHICLE_OPTIONS.map(v => <option key={v} value={v}>{v}</option>)}
-        </select>
-      </FormField>
-
-      {/* Row 5 */}
+      <div>
+        <Lbl>Vehicle Type</Lbl>
+        <Sel value={f.vehicle} onChange={e=>set('vehicle',e.target.value)} error={err.vehicle} placeholder="Select vehicle type">
+          {VEHICLE_TYPES.map(v=><option key={v} value={v}>{v}</option>)}
+        </Sel>
+      </div>
       <div className="grid grid-cols-2 gap-3">
-        <FormField label="Your Name" required>
-          <input type="text" placeholder="Full name" value={form.name}
-            onChange={e => update('name', e.target.value)}
-            onFocus={() => setFocused('name')} onBlur={() => setFocused('')}
-            style={inp('name')} />
-        </FormField>
-        <FormField label="Phone Number" required>
-          <input type="tel" inputMode="numeric" placeholder="+91 9XXXXXXXXX" value={form.phone}
-            onChange={e => update('phone', e.target.value)}
-            onFocus={() => setFocused('phone')} onBlur={() => setFocused('')}
-            style={inp('phone')} />
-          {errors.phone && (
-            <span style={{ fontSize: '10px', color: '#EF4444', marginTop: '2px' }}>
-              Please enter a valid 10-digit Indian mobile number.
-            </span>
-          )}
-        </FormField>
+        <div><Lbl>Name</Lbl><Inp value={f.name} onChange={e=>set('name',e.target.value)} placeholder="Your name" error={err.name} /></div>
+        <div>
+          <Lbl>Phone</Lbl>
+          <Inp type="tel" inputMode="numeric" value={f.phone} onChange={e=>set('phone',e.target.value)} placeholder="+91 XXXXXXXXXX" error={err.phone} />
+          {err.phone && <p className="text-[10px] text-red-500 mt-1">Valid 10-digit Indian number required.</p>}
+        </div>
       </div>
-
-      {/* Validation summary — only shown for non-phone fields */}
-      {Object.keys(errors).filter(k => k !== 'phone').length > 0 && (
-        <p style={{ fontSize: '11px', color: '#EF4444', textAlign: 'center' }}>
-          Please fill in all required fields.
-        </p>
+      {Object.keys(err).filter(k=>k!=='phone').length > 0 && (
+        <p className="text-xs text-red-500 text-center">Please fill all required fields.</p>
       )}
-
-      {/* Submit */}
       <button type="submit"
-        className="flex items-center justify-center gap-2 w-full font-bold rounded-xl transition-all duration-300 min-h-[50px] text-white"
-        style={{ background: '#F97316', fontSize: '15px', boxShadow: '0 6px 20px rgba(249,115,22,0.35)', border: 'none', cursor: 'pointer' }}
-        onMouseEnter={(e) => { e.currentTarget.style.background = '#EA580C'; e.currentTarget.style.boxShadow = '0 10px 28px rgba(249,115,22,0.45)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-        onMouseLeave={(e) => { e.currentTarget.style.background = '#F97316'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(249,115,22,0.35)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
-        <FaWhatsapp size={18} /> Request a Booking
+        className="btn-orange w-full h-12 rounded-xl text-[15px] mt-1"
+        style={{ justifyContent: 'center' }}>
+        <MessageCircle size={18} /> Request Booking via WhatsApp
       </button>
-
-      <p style={{ fontSize: '11px', color: '#9CA3AF', textAlign: 'center' }}>
-        Opens WhatsApp with your trip details pre-filled.
-      </p>
+      <p className="text-center text-[10px] text-gray-400">Opens WhatsApp with your trip details.</p>
     </form>
   );
 }
 
+/* ── Hero ─────────────────────────────────────────────── */
 export default function Hero() {
   return (
-    <section id="home" className="overflow-hidden" style={{ background: '#0D1B2A' }}>
-      {/* Faint bg car */}
-      <div className="absolute inset-0 pointer-events-none">
-        <img src="/Eritiga.png" alt="" aria-hidden="true" className="w-full h-full"
-          style={{ objectFit: 'contain', objectPosition: 'center right', opacity: 0.04 }} />
+    <section id="home" className="relative overflow-hidden" style={{ background: '#0D1B2A', minHeight: '100svh', display: 'flex', flexDirection: 'column' }}>
+
+      {/* ── Background: right half car image ── */}
+      <div className="absolute inset-y-0 right-0 w-full lg:w-[55%] pointer-events-none">
+        <img src="/Eritiga.png" alt=""
+          className="w-full h-full object-contain object-center"
+          style={{ opacity: 0.18 }} />
+        {/* fade-left overlay so text is readable */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to right, #0D1B2A 0%, rgba(13,27,42,0.85) 40%, rgba(13,27,42,0.3) 100%)'
+        }} />
       </div>
 
-      {/* ── Main: two columns ── */}
-      <div className="container-max px-4 md:px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 xl:gap-12 pt-6 md:pt-8 lg:pt-10 pb-8 md:pb-10 items-start">
+      {/* On large screens, show a real car photo on the right */}
+      <div className="absolute inset-y-0 right-0 w-[50%] pointer-events-none hidden lg:block overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&q=90&auto=format&fit=crop"
+          alt="Premium cab service"
+          className="w-full h-full object-cover object-left"
+          style={{ opacity: 0.5 }}
+        />
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to right, #0D1B2A 0%, rgba(13,27,42,0.7) 45%, rgba(13,27,42,0.1) 100%)'
+        }} />
+      </div>
 
-          {/* ── LEFT: hero text + CTAs ── */}
-          <div className="text-center lg:text-left pt-2 lg:pt-6">
-            {/* Orange badge */}
-            <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full mb-4"
-              style={{ background: 'rgba(249,115,22,0.15)', border: '1px solid rgba(249,115,22,0.3)', color: '#FB923C' }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-              Bangalore's Trusted Cab Service
-            </div>
+      {/* ── Main two-column content ── */}
+      <div className="container-max relative z-10 flex-1 flex items-center">
+        <div className="grid lg:grid-cols-[55%_45%] gap-8 xl:gap-12 w-full py-12 lg:py-16 items-center">
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-4">
-              {[
-                { icon: '🚖', text: 'Yellow Board Vehicles' },
-                { icon: '📍', text: 'Bangalore Based' },
-                { icon: '✓', text: 'Professional Drivers' },
-              ].map((b) => (
-                <div key={b.text}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
-                  style={{ background: 'rgba(251,191,36,0.12)', border: '1px solid rgba(251,191,36,0.22)', color: '#FCD34D' }}>
-                  <span>{b.icon}</span> {b.text}
-                </div>
-              ))}
-            </div>
+          {/* LEFT — headline + trust */}
+          <div className="max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+            {/* Eyebrow */}
+            <span className="eyebrow-light">
+              <Shield size={11} /> Yellow Board Commercial Cabs · Bangalore
+            </span>
 
             {/* H1 */}
-            <h1 className="font-heading font-black leading-[1.05] mb-3"
-              style={{ fontSize: 'clamp(1.8rem, 4vw, 3.4rem)', color: '#FFFFFF', letterSpacing: '-1.5px' }}>
-              LnT Travels —
-              <br />
-              <span className="orange-gradient">Cab Service in Bangalore</span>
+            <h1 className="font-heading font-bold mt-1 mb-4 text-white"
+              style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', letterSpacing: '-0.5px', lineHeight: 1.15 }}>
+              Reliable Cab Service<br />
+              <span className="orange-gradient">Across Bangalore</span>
             </h1>
 
-            <p className="font-semibold mb-2" style={{ fontSize: 'clamp(0.8rem, 1.6vw, 0.92rem)', color: '#CBD5E1' }}>
-              Airport Transfers · Local Trips · One Way · Outstation
-            </p>
-            <p className="leading-relaxed mb-7 max-w-lg mx-auto lg:mx-0"
-              style={{ fontSize: 'clamp(0.8rem, 1.5vw, 0.88rem)', color: '#94A3B8', lineHeight: '1.8' }}>
-              Safe, comfortable journeys — business travel, family vacations, airport transfers,
-              or outstation getaways. Licensed Yellow Board vehicles, professional drivers, 24×7.
+            <p className="mb-8 text-slate-400 leading-relaxed max-w-md mx-auto lg:mx-0"
+              style={{ fontSize: 'clamp(0.88rem, 1.6vw, 1rem)' }}>
+              Airport transfers, local rides, one-way trips, and outstation travel —
+              professional drivers, clean vehicles, transparent fares. Always on time.
             </p>
 
-            {/* Quick CTA buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 mb-8">
+            {/* 2-stat trust strip — removed */}
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 mb-5">
               <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-300 min-h-[48px] text-white"
-                style={{ background: '#25D366', boxShadow: '0 6px 20px rgba(37,211,102,0.35)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = '#20BA5A'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = '#25D366'; e.currentTarget.style.transform = 'translateY(0)'; }}>
-                <FaWhatsapp size={17} /> Book on WhatsApp
+                className="inline-flex items-center justify-center font-bold text-base px-8 py-3.5 rounded-xl transition-all duration-200"
+                style={{ background: '#FBBF24', color: '#0f172a', minWidth: '180px' }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#F59E0B'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#FBBF24'; }}>
+                Book Your Cab
               </a>
-              <a href="tel:+919113052138"
-                className="flex items-center justify-center gap-2.5 font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-300 min-h-[48px] text-white"
-                style={{ background: '#2563EB', boxShadow: '0 6px 18px rgba(37,99,235,0.3)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = '#1D4ED8'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = '#2563EB'; e.currentTarget.style.transform = 'translateY(0)'; }}>
-                <FaPhone size={14} /> Call Now
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center justify-center font-bold text-base px-8 py-3.5 rounded-xl transition-all duration-200"
+                style={{ background: 'transparent', color: '#ffffff', border: '2px solid rgba(255,255,255,0.35)', minWidth: '180px' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.7)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.35)'; }}>
+                WhatsApp Us
               </a>
             </div>
 
-            {/* Features mini-strip (desktop only — hidden on mobile to save space) */}
-            <div className="hidden lg:grid grid-cols-2 gap-2.5">
-              {features.slice(0, 4).map((f) => (
-                <div key={f.title}
-                  className="flex items-center gap-2 px-3 py-2.5 rounded-xl"
-                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(249,115,22,0.12)', color: '#F97316' }}>
-                    {f.icon}
-                  </div>
-                  <span style={{ fontSize: '0.73rem', fontWeight: 600, color: '#CBD5E1' }}>{f.title}</span>
-                </div>
-              ))}
-            </div>
+            <p className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              Call +91 91130 52138
+            </p>
           </div>
 
-          {/* ── RIGHT: Quick Booking Enquiry card ── */}
-          <div className="relative z-10">
-            <div style={{
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '28px 24px 24px',
-              boxShadow: '0 24px 64px rgba(0,0,0,0.35)',
-              border: '1px solid rgba(255,255,255,0.12)',
-            }}>
+          {/* RIGHT — floating booking card */}
+          <div className="w-full max-w-sm mx-auto lg:ml-16 lg:mr-0">
+            <div className="rounded-2xl overflow-hidden"
+              style={{ background: '#FFFFFF', boxShadow: '0 32px 80px rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.1)' }}>
               {/* Card header */}
-              <div className="mb-5">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-1 h-6 rounded-full" style={{ background: '#F97316' }} />
-                  <h2 className="font-heading font-black text-xl" style={{ color: '#0D1B2A' }}>
-                    Quick Booking Enquiry
-                  </h2>
-                </div>
-                <p style={{ fontSize: '12px', color: '#6B7280', paddingLeft: '12px' }}>
-                  Share your trip details and we'll confirm your cab via WhatsApp.
-                </p>
-              </div>
-
-              <BookingForm />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Features strip — mobile only (all 7 features) ── */}
-      <div className="lg:hidden container-max px-4 md:px-6 pb-8">
-        <div style={{
-          background: 'rgba(255,255,255,0.05)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          borderRadius: '16px',
-          padding: '16px',
-          position: 'relative',
-          overflow: 'hidden',
-        }}>
-          <div className="absolute top-0 left-0 right-0 h-0.5"
-            style={{ background: 'linear-gradient(to right, #F97316, #EA580C, #F97316)' }} />
-          <div className="grid grid-cols-2 gap-2.5 pt-1">
-            {features.map((f) => (
-              <div key={f.title} className="flex items-start gap-2 p-2.5 rounded-xl"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'rgba(249,115,22,0.12)', color: '#F97316' }}>
-                  {f.icon}
-                </div>
+              <div className="px-6 py-4 flex items-center gap-3"
+                style={{ background: '#0D1B2A', borderBottom: '2px solid #FBBF24' }}>
+                <div className="w-1.5 h-6 rounded-full" style={{ background: '#FBBF24' }} />
                 <div>
-                  <p style={{ fontSize: '0.72rem', fontWeight: 700, color: '#F1F5F9' }}>{f.title}</p>
-                  <p style={{ fontSize: '0.62rem', color: '#64748B', lineHeight: '1.35' }}>{f.desc}</p>
+                  <h2 className="font-heading font-black text-base text-white">Quick Booking Enquiry</h2>
+                  <p className="text-[11px] text-slate-400">Fill in details — we confirm via WhatsApp</p>
                 </div>
               </div>
-            ))}
+              <div className="p-5">
+                <BookingForm />
+              </div>
+            </div>
           </div>
         </div>
       </div>
