@@ -129,76 +129,6 @@ function setPageMetadata(route) {
   }
 }
 
-function SummarySection() {
-  return (
-    <section className="section-padding" style={{ background: '#F8FAFC' }}>
-      <div className="container-max">
-        <div className="rounded-[28px] border border-[#E5E7EB] bg-white p-6 md:p-8 lg:p-10 shadow-[0_12px_40px_rgba(15,23,42,0.05)]">
-          <p className="section-label">Bottom line</p>
-          <h2 className="font-heading font-bold mb-4 text-[#0F172A]" style={{ fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', letterSpacing: '-0.4px' }}>
-            Reliable Bangalore cab service for airport transfers, local rides, and business travel.
-          </h2>
-          <p className="mb-4 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
-            LnT Travels is a Bangalore cab service for airport pickups, local commutes, family rides, and outstation travel. If you are wondering how to book a cab in Bangalore quickly, the short answer is simple: send your trip details on WhatsApp or the booking form and we confirm availability and fare fast.
-          </p>
-          <p className="mb-6 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
-            We help business travelers, families, and corporate teams move with verified drivers, transparent pricing, and dependable schedules. See our <a href="/about" className="font-semibold underline underline-offset-4" style={{ color: '#0F172A' }}>about page</a> or <a href="/airport-taxi-bangalore" className="font-semibold underline underline-offset-4" style={{ color: '#0F172A' }}>airport cab service page</a> for the full picture.
-          </p>
-
-          <ul className="grid gap-3 md:grid-cols-3">
-            {[
-              'Airport transfers with clear pricing and punctual pickup',
-              'Local rides and family trips with verified, professional drivers',
-              'Corporate bookings and repeat travel support across Bangalore'
-            ].map((item) => (
-              <li key={item} className="rounded-2xl border border-[#E5E7EB] bg-[#F8FAFC] p-4 text-sm font-medium list-none" style={{ color: '#0F172A' }}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function QAndASection() {
-  const items = [
-    {
-      heading: 'How do I book a cab in Bangalore quickly?',
-      answer: 'LnT Travels makes booking simple: send your pickup, drop, date, time, and vehicle preference through WhatsApp or the form on this page, and we confirm the fare and driver details quickly.'
-    },
-    {
-      heading: 'Is LnT Travels available 24/7 for airport and city rides?',
-      answer: 'Yes. LnT Travels offers 24/7 cab service across Bangalore for airport transfers, late-night drops, local city rides, and urgent travel needs with transparent support.'
-    },
-    {
-      heading: 'Should you choose LnT Travels for outstation or corporate travel?',
-      answer: 'Yes if you want dependable airport and business travel support with verified drivers, clear communication, and scheduled service across Bangalore and Karnataka.'
-    }
-  ];
-
-  return (
-    <section className="section-padding" style={{ background: '#FFFFFF' }}>
-      <div className="container-max">
-        <div className="mb-8 text-center">
-          <span className="section-pill">Quick answers</span>
-          <h2 className="section-title">Direct answers before you book</h2>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-3">
-          {items.map(({ heading, answer }) => (
-            <article key={heading} className="rounded-3xl border border-[#E5E7EB] bg-[#F8FAFC] p-6" style={{ boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 className="font-heading font-bold mb-3 text-[#0F172A]" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', lineHeight: 1.35 }}>{heading}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: '#475569' }}>{answer}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function ServiceComparisonSection() {
   const rows = [
     { name: 'Economy', bestFor: 'Daily city rides and budget travel', features: 'Clean sedan or hatchback, transparent fares, ideal for local trips' },
@@ -288,12 +218,96 @@ function TestimonialsSection() {
   );
 }
 
+function SEOBottomLineSection() {
+  const faqItems = [
+    {
+      question: 'How do I book a cab in Bangalore quickly?',
+      answer: 'LnT Travels makes booking simple: send your pickup, drop, date, time, and vehicle preference through WhatsApp or the form on this page, and we confirm the fare and driver details quickly.'
+    },
+    {
+      question: 'Is LnT Travels available 24/7 for airport and city rides?',
+      answer: 'Yes. LnT Travels offers 24/7 cab service across Bangalore for airport transfers, late-night drops, local city rides, and urgent travel needs with transparent support.'
+    },
+    {
+      question: 'Should you choose LnT Travels for outstation or corporate travel?',
+      answer: 'Yes if you want dependable airport and business travel support with verified drivers, clear communication, and scheduled service across Bangalore and Karnataka.'
+    }
+  ];
+
+  const [openIndex, setOpenIndex] = useState(0);
+
+  return (
+    <section className="section-padding" style={{ background: '#FFFFFF' }}>
+      <div className="container-max">
+        <div className="rounded-[28px] border border-[#E5E7EB] bg-white p-6 md:p-8 lg:p-10 shadow-[0_12px_40px_rgba(15,23,42,0.05)]">
+          <p className="section-label">Bottom line</p>
+          <h2 className="font-heading font-bold mb-4 text-[#0F172A]" style={{ fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', letterSpacing: '-0.4px' }}>
+            Reliable Bangalore cab service for airport transfers, local rides, and business travel.
+          </h2>
+          <p className="mb-4 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
+            LnT Travels is a Bangalore cab service for airport pickups, local commutes, family rides, and outstation travel. If you are wondering how to book a cab in Bangalore quickly, the short answer is simple: send your trip details on WhatsApp or by booking form, and we confirm availability and fare fast.
+          </p>
+          <p className="mb-4 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
+            We help business travelers, families, and corporate teams move with verified drivers, transparent pricing, and dependable schedules. See our <a href="/about" className="font-semibold underline underline-offset-4" style={{ color: '#0F172A' }}>About page</a> or <a href="/airport-taxi-bangalore" className="font-semibold underline underline-offset-4" style={{ color: '#0F172A' }}>Airport Cab Service page</a> for the full picture.
+          </p>
+          <p className="mb-6 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
+            Our fleet includes comfortable sedans and SUVs for airport transfers, local city rides, family travel, and business trips across Bangalore.
+          </p>
+
+          <ul className="grid gap-3 md:grid-cols-3">
+            {[
+              'Airport transfers with clear pricing and punctual pickup',
+              'Local rides and family trips with verified, professional drivers',
+              'Corporate bookings and repeat travel support across Bangalore'
+            ].map((item) => (
+              <li key={item} className="rounded-2xl border border-[#E5E7EB] bg-[#F8FAFC] p-4 text-sm font-medium list-none" style={{ color: '#0F172A' }}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-10">
+          <p className="section-label">Quick answers</p>
+          <h2 className="section-title">Direct answers before you book</h2>
+
+          <div className="mt-6 space-y-4">
+            {faqItems.map((faq, index) => {
+              const isOpen = openIndex === index;
+
+              return (
+                <div key={faq.question} className="rounded-2xl border border-[#E5E7EB] bg-[#F8FAFC] p-4 md:p-5" style={{ boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+                  <h3 className="font-heading font-bold text-base md:text-lg text-[#0F172A]">
+                    <button
+                      type="button"
+                      className="flex w-full items-center justify-between gap-4 text-left"
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-panel-${index}`}
+                      onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    >
+                      <span>{faq.question}</span>
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E7EB] bg-white text-lg font-bold" style={{ color: '#0F172A' }} aria-hidden="true">
+                        {isOpen ? '−' : '+'}
+                      </span>
+                    </button>
+                  </h3>
+                  <div id={`faq-panel-${index}`} hidden={!isOpen} className="mt-3">
+                    <p className="text-sm leading-relaxed" style={{ color: '#475569' }}>{faq.answer}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HomePage() {
   return (
     <>
       <Hero />
-      <SummarySection />
-      <QAndASection />
       <TrustBanner />
       <About />
       <Services />
@@ -303,6 +317,7 @@ function HomePage() {
       <CTA />
       <Contact />
       <TestimonialsSection />
+      <SEOBottomLineSection />
     </>
   );
 }
