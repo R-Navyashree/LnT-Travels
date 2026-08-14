@@ -190,11 +190,11 @@ function TestimonialsSection() {
   const googleReviewsUrl = 'https://www.google.com/maps/search/?api=1&query=LnT+Travels+Bangalore';
 
   return (
-    <section id="reviews" className="section-padding" style={{ background: '#F8FAFC' }}>
+    <section id="reviews" className="section-padding" style={{ background: '#0D1B2A' }}>
       <div className="container-max">
         <div className="mb-10 text-center">
-          <h2 className="section-title">What Our Customers Say</h2>
-          <a href={googleReviewsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center text-sm font-semibold text-[#0F172A] underline-offset-4 hover:underline" style={{ color: '#0F172A' }}>
+          <h2 className="section-title" style={{ color: '#FFFFFF' }}>What Our Customers Say</h2>
+          <a href={googleReviewsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center text-sm font-semibold underline-offset-4 hover:underline" style={{ color: '#F8FAFC' }}>
             ⭐ 5.0 out of 5 — based on 52 Google Reviews
           </a>
           <div className="mt-5">
@@ -204,12 +204,12 @@ function TestimonialsSection() {
 
         <div className="grid gap-5 lg:grid-cols-3">
           {testimonials.map((review) => (
-            <article key={review.name} className="rounded-3xl border border-[#E5E7EB] bg-white p-5 md:p-6" style={{ boxShadow: '0 12px 36px rgba(15,23,42,0.05)' }}>
+            <article key={review.name} className="rounded-3xl border border-white/10 bg-white/5 p-5 md:p-6" style={{ boxShadow: '0 12px 36px rgba(15,23,42,0.2)' }}>
               <div className="flex items-center justify-between gap-3 mb-4">
-                <h3 className="font-heading font-bold text-lg text-[#0F172A]">{review.name}</h3>
+                <h3 className="font-heading font-bold text-lg text-white">{review.name}</h3>
                 <span className="text-[#FBBF24] text-sm font-bold">★★★★★</span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: '#475569' }}>{review.quote}</p>
+              <p className="text-sm leading-relaxed" style={{ color: '#E2E8F0' }}>{review.quote}</p>
             </article>
           ))}
         </div>
