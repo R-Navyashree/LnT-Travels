@@ -267,31 +267,31 @@ function SEOBottomLineSection() {
           </ul>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-8">
           <p className="section-label">Quick answers</p>
           <h2 className="section-title">Direct answers before you book</h2>
 
-          <div className="mt-6 space-y-4">
+          <div className="mt-4 space-y-3">
             {faqItems.map((faq, index) => {
               const isOpen = openIndex === index;
 
               return (
-                <div key={faq.question} className="rounded-2xl border border-[#E5E7EB] bg-[#F8FAFC] p-4 md:p-5" style={{ boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-                  <h3 className="font-heading font-bold text-base md:text-lg text-[#0F172A]">
+                <div key={faq.question} className="rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] p-3 md:p-4" style={{ boxShadow: '0 6px 18px rgba(15,23,42,0.03)' }}>
+                  <h3 className="font-heading font-bold text-sm md:text-base text-[#0F172A]">
                     <button
                       type="button"
-                      className="flex w-full items-center justify-between gap-4 text-left"
+                      className="flex w-full items-center justify-between gap-3 text-left"
                       aria-expanded={isOpen}
                       aria-controls={`faq-panel-${index}`}
                       onClick={() => setOpenIndex(isOpen ? -1 : index)}
                     >
                       <span>{faq.question}</span>
-                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E7EB] bg-white text-lg font-bold" style={{ color: '#0F172A' }} aria-hidden="true">
+                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[#E5E7EB] bg-white text-base font-bold" style={{ color: '#0F172A' }} aria-hidden="true">
                         {isOpen ? '−' : '+'}
                       </span>
                     </button>
                   </h3>
-                  <div id={`faq-panel-${index}`} hidden={!isOpen} className="mt-3">
+                  <div id={`faq-panel-${index}`} hidden={!isOpen} className="mt-2">
                     <p className="text-sm leading-relaxed" style={{ color: '#475569' }}>{faq.answer}</p>
                   </div>
                 </div>
