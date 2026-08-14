@@ -147,7 +147,7 @@ export default function Hero() {
         <img
           src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&q=90&auto=format&fit=crop"
           alt="Premium cab service"
-          className="w-full h-full object-cover object-left"
+          className="w-full h-full object-cover object-left animate-float-slow"
           style={{ opacity: 0.5 }}
         />
         <div className="absolute inset-0" style={{
@@ -160,7 +160,7 @@ export default function Hero() {
         <div className="grid lg:grid-cols-[55%_45%] gap-8 xl:gap-12 w-full py-12 lg:py-16 items-center">
 
           {/* LEFT — headline + trust */}
-          <div className="max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+          <div className="max-w-lg mx-auto lg:mx-0 text-center lg:text-left animate-slide-up">
             {/* Eyebrow */}
             <span className="eyebrow-light">
               <Shield size={11} /> Yellow Board Commercial Cabs · Bangalore
@@ -173,13 +173,24 @@ export default function Hero() {
               <span className="orange-gradient">Cab Service</span>
             </h1>
 
-            <p className="mb-8 text-slate-400 leading-relaxed max-w-md mx-auto lg:mx-0"
+            <p className="mb-4 text-slate-400 leading-relaxed max-w-md mx-auto lg:mx-0"
               style={{ fontSize: 'clamp(0.88rem, 1.6vw, 1rem)' }}>
               Airport transfers, local rides, one-way trips, and outstation travel —
               professional drivers, clean vehicles, transparent fares. Always on time.
             </p>
 
-            {/* 2-stat trust strip — removed */}
+            <p className="mb-8 max-w-md mx-auto lg:mx-0 text-slate-200 leading-relaxed"
+              style={{ fontSize: 'clamp(0.92rem, 1.5vw, 1rem)' }}>
+              LnT Travels provides reliable cab service in Bangalore for airport transfers, local rides, one-way trips and outstation travel. Book through WhatsApp or the online booking form for availability and fare confirmation.
+            </p>
+
+            <div className="mb-7 flex flex-wrap justify-center lg:justify-start gap-2.5">
+              {['Airport pickup', 'Local rides', 'Corporate travel'].map((item) => (
+                <span key={item} className="hero-badge inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-200">
+                  {item}
+                </span>
+              ))}
+            </div>
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 mb-5">
@@ -205,12 +216,12 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — floating booking card */}
-          <div className="w-full max-w-sm mx-auto lg:ml-16 lg:mr-0">
-            <div className="rounded-2xl overflow-hidden"
-              style={{ background: '#FFFFFF', boxShadow: '0 32px 80px rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="w-full max-w-sm mx-auto lg:ml-16 lg:mr-0" style={{ animation: 'none' }}>
+            <div className="rounded-[26px] overflow-hidden border border-white/10"
+              style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96))', boxShadow: '0 32px 80px rgba(0,0,0,0.45)' }}>
               {/* Card header */}
               <div className="px-6 py-4 flex items-center gap-3"
-                style={{ background: '#0D1B2A', borderBottom: '2px solid #FBBF24' }}>
+                style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #13263d 100%)', borderBottom: '2px solid #FBBF24' }}>
                 <div className="w-1.5 h-6 rounded-full" style={{ background: '#FBBF24' }} />
                 <div>
                   <h2 className="font-heading font-black text-base text-white">Quick Booking Enquiry</h2>

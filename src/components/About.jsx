@@ -33,7 +33,9 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-10 xl:gap-16 items-center">
           {/* Image side */}
           <div ref={L} className={`reveal-left ${lv ? 'visible' : ''} relative`}>
-            <div className="rounded-3xl overflow-hidden" style={{ height: 'clamp(260px, 40vw, 420px)', boxShadow: '0 24px 60px rgba(15,23,42,0.14)' }}>
+            <div className="rounded-3xl overflow-hidden relative" style={{ height: 'clamp(260px, 40vw, 420px)', boxShadow: '0 24px 60px rgba(15,23,42,0.14)' }}>
+              <div className="floating-orb left-6 top-6 h-20 w-20 bg-yellow-300/40" />
+              <div className="floating-orb right-8 bottom-6 h-24 w-24 bg-sky-300/30" style={{ animationDelay: '0.8s' }} />
               <img src="/Vehicles.png" alt="LnT Travels fleet in Bangalore"
                 className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 rounded-3xl" style={{ background: 'linear-gradient(to top, rgba(13,27,42,0.5) 0%, transparent 50%)' }} />
@@ -50,7 +52,7 @@ export default function About() {
             <div className="absolute -bottom-5 left-4 right-4 rounded-2xl bg-white grid grid-cols-4 gap-0 overflow-hidden"
               style={{ boxShadow: '0 10px 36px rgba(15,23,42,0.14)', border: '1px solid #E5E7EB' }}>
               {stats.map(({ value, label, icon: Icon }, i) => (
-                <div key={label} className={`flex flex-col items-center py-3 ${i < stats.length - 1 ? 'border-r border-gray-100' : ''}`}>
+                <div key={label} className={`about-stat flex flex-col items-center py-3 ${i < stats.length - 1 ? 'border-r border-gray-100' : ''}`}>
                   <Icon size={13} className="mb-1" style={{ color: '#FBBF24' }} />
                   <div className="font-heading font-black text-base md:text-lg leading-none orange-gradient">{value}</div>
                   <div className="text-[9px] font-semibold mt-0.5 uppercase tracking-wide text-gray-400">{label}</div>

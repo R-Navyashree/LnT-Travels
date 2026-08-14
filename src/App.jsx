@@ -25,10 +25,10 @@ const ROUTES = [
 
 const ROUTE_META = {
   home: {
-    title: 'LnT Travels | Cab Service in Bangalore | Airport & Outstation Taxi',
-    description: 'LnT Travels provides reliable cab service in Bangalore for airport transfers, local trips, one-way travel, round trips and outstation journeys. Book a comfortable cab with professional drivers.',
-    ogTitle: 'LnT Travels | Cab Service in Bangalore | Airport & Outstation Taxi',
-    ogDescription: 'Reliable cab service in Bangalore for airport transfers, local trips, one-way travel, round trips and outstation journeys.'
+    title: 'LnT Travels | Cab Service in Bangalore',
+    description: 'Book reliable cab service in Bangalore with LnT Travels for airport transfers, local rides, one-way trips and outstation travel.',
+    ogTitle: 'LnT Travels | Cab Service in Bangalore',
+    ogDescription: 'Book reliable cab service in Bangalore with LnT Travels for airport transfers, local rides, one-way trips and outstation travel.'
   },
   'airport-taxi-bangalore': {
     title: 'Bangalore Airport Taxi | Airport Cab Service | LnT Travels',
@@ -127,48 +127,6 @@ function setPageMetadata(route) {
   if (!document.querySelector('link[rel="canonical"]')) {
     document.head.appendChild(canonical);
   }
-}
-
-function ServiceComparisonSection() {
-  const rows = [
-    { name: 'Economy', bestFor: 'Daily city rides and budget travel', features: 'Clean sedan or hatchback, transparent fares, ideal for local trips' },
-    { name: 'Premium', bestFor: 'Airport transfers and family travel', features: 'Spacious SUV or MUV, extra comfort, smoother long-distance journeys' },
-    { name: 'Corporate', bestFor: 'Office commutes and recurring business travel', features: 'Priority scheduling, consistent accounts, dependable chauffeur service' }
-  ];
-
-  return (
-    <section id="pricing" className="section-padding" style={{ background: '#0D1B2A' }}>
-      <div className="container-max">
-        <div className="mb-10 text-center">
-          <span className="section-pill" style={{ background: 'rgba(251,191,36,0.12)', color: '#FBBF24', borderColor: 'rgba(251,191,36,0.25)' }}>Choose a service</span>
-          <h2 className="font-heading font-bold mb-3 text-white" style={{ fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', letterSpacing: '-0.4px' }}>
-            Which cab is right for your trip?
-          </h2>
-        </div>
-
-        <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-          <table className="w-full border-collapse text-left text-sm text-slate-200">
-            <thead>
-              <tr style={{ background: 'rgba(255,255,255,0.04)' }}>
-                <th className="p-4">Service</th>
-                <th className="p-4">Best for</th>
-                <th className="p-4">What you get</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.name} className="border-t border-white/10">
-                  <td className="p-4 font-bold text-white">{row.name}</td>
-                  <td className="p-4 text-slate-200">{row.bestFor}</td>
-                  <td className="p-4 text-slate-300">{row.features}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  );
 }
 
 function TestimonialsSection() {
@@ -311,7 +269,6 @@ function HomePage() {
       <TrustBanner />
       <About />
       <Services />
-      <ServiceComparisonSection />
       <Destinations />
       <Vehicles />
       <CTA />

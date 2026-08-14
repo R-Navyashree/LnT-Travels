@@ -29,8 +29,8 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`bg-white transition-shadow duration-300 ${scrolled ? 'shadow-[0_4px_24px_rgba(15,23,42,0.08)]' : ''}`}
-        style={{ borderBottom: '1px solid #e5e7eb' }}>
+      <nav className={`sticky top-0 z-50 bg-white/85 backdrop-blur-md transition-all duration-300 ${scrolled ? 'shadow-[0_4px_24px_rgba(15,23,42,0.08)] border-b border-slate-200/80' : 'border-b border-slate-200/60'}`}
+        style={{ borderBottomWidth: '1px' }}>
         <div className="container-max flex items-center justify-between h-[88px]">
 
           {/* Logo */}

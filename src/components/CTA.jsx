@@ -5,9 +5,8 @@ import { WHATSAPP_NUMBER, BOOKING_MSG } from '../constants';
 export default function CTA() {
   return (
     <section className="relative overflow-hidden py-16 px-4" style={{ background: '#0D1B2A' }}>
-      {/* Subtle radial glow */}
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(251,191,36,0.07) 0%, transparent 70%)' }} />
+      <div className="floating-orb left-1/2 top-10 h-40 w-40 bg-yellow-400/20" style={{ transform: 'translateX(-50%)' }} />
+      <div className="floating-orb right-8 bottom-6 h-32 w-32 bg-sky-400/15" style={{ animationDelay: '0.7s' }} />
 
       <div className="container-max relative z-10 text-center max-w-xl mx-auto">
         {/* Orange accent line */}
