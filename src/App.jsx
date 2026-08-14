@@ -14,6 +14,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 const ROUTES = [
   'home',
   'airport-taxi-bangalore',
+  'our-fleet',
   'outstation-cab-bangalore',
   'one-way-cab-bangalore',
   'local-cab-bangalore',
@@ -35,6 +36,12 @@ const ROUTE_META = {
     description: 'Book a Bangalore airport taxi with LnT Travels for airport pickup, airport drop and reliable transfers between Bengaluru airport and the city.',
     ogTitle: 'Bangalore Airport Taxi Service | LnT Travels',
     ogDescription: 'Airport pickup and drop service in Bangalore with professional drivers and comfortable vehicles.'
+  },
+  'our-fleet': {
+    title: 'Our Fleet | Bangalore Taxi Vehicles | LnT Travels',
+    description: 'Explore the LnT Travels fleet in Bangalore, including hatchbacks, sedans, SUVs and premium MPVs for airport, local and outstation travel.',
+    ogTitle: 'Our Fleet | LnT Travels',
+    ogDescription: 'Choose from reliable hatchbacks, sedans, SUVs and premium MPVs for your trip in Bangalore.'
   },
   'outstation-cab-bangalore': {
     title: 'Outstation Cab from Bangalore | One-Way & Round Trip Taxi',
@@ -436,51 +443,94 @@ function AirportTaxiPage() {
 }
 
 function OutstationCabPage() {
+  const destinations = [
+    {
+      name: 'Coorg',
+      description: 'Coffee country hills and misty mornings in the Western Ghats.',
+      image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80'
+    },
+    {
+      name: 'Chikmagalur',
+      description: 'Green estate roads and calm hill views for a slow weekend.',
+      image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80'
+    },
+    {
+      name: 'Mysore',
+      description: 'Heritage palaces, gardens and an easy drive from Bangalore.',
+      image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80'
+    },
+    {
+      name: 'Ooty',
+      description: 'Nilgiri tea gardens and cool weather in the hills.',
+      image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80'
+    },
+    {
+      name: 'Wayanad',
+      description: 'Forests, waterfalls and quiet stays across the Kerala border.',
+      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80'
+    },
+    {
+      name: 'Sakleshpur',
+      description: 'Ghat sections, plantations and a short scenic getaway.',
+      image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80'
+    },
+    {
+      name: 'Hampi',
+      description: 'Boulder landscapes and ancient stone monuments.',
+      image: 'https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&w=900&q=80'
+    },
+    {
+      name: 'Kabini',
+      description: 'River-side calm and wildlife country in south Karnataka.',
+      image: 'https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=900&q=80'
+    }
+  ];
+
   return (
-    <ServiceLandingPage
-      title="Outstation Cab Service from Bangalore"
-      intro="For outstation trips from Bangalore, LnT Travels helps you plan dependable intercity journeys with a professional driver, comfortable ride and flexible one-way or round-trip options."
-      highlights={[
-        'Popular routes to Mysore, Coorg, Chikmagalur and Ooty',
-        'One-way and round-trip travel options',
-        'Professional drivers for longer journeys'
-      ]}
-      sections={[
-        {
-          heading: 'Outstation routes and travel needs',
-          content: [
-            'Whether you are travelling for family time, a business visit or a weekend getaway, we support outstation cab bookings from Bangalore to popular destinations across Karnataka and nearby areas.',
-            'Popular routes include Mysore, Coorg, Chikmagalur, Ooty and other planned intercity travel needs.'
-          ]
-        },
-        {
-          heading: 'Vehicle options and driver support',
-          content: [
-            'You can choose a suitable vehicle based on passenger count, luggage and comfort needs. We focus on clean vehicles, reliable drivers and clear trip coordination before departure.',
-            'When the trip is longer, comfort and timing matter. We help plan the route and the pickup schedule around your travel needs.'
-          ]
-        },
-        {
-          heading: 'Booking process for outstation travel',
-          content: [
-            'Send your pickup date, destination, trip type and preferred vehicle details. We will confirm the trip and help align a clear pickup and drop plan for your outstation journey.',
-            'This works well for one-way travel as well as return bookings when your trip requires a round-trip cab from Bangalore.'
-          ]
-        }
-      ]}
-      faqs={[
-        { q: 'Do you provide one-way outstation cabs from Bangalore?', a: 'Yes. We support one-way and round-trip outstation travel from Bangalore depending on your route and schedule.' },
-        { q: 'Can I book a round-trip taxi?', a: 'Yes. We can help with round-trip cab bookings when your travel plan includes a return journey from the destination back to Bangalore.' },
-        { q: 'Which destinations can I travel to from Bangalore?', a: 'Popular routes include Mysore, Coorg, Chikmagalur, Ooty and other intercity destinations across Karnataka and nearby regions.' }
-      ]}
-      ctaLabel="Plan Your Outstation Trip"
-      ctaHref="https://wa.me/919113052138?text=I%20need%20an%20outstation%20cab%20from%20Bangalore"
-      relatedLinks={[
-        { href: '/round-trip-cab-bangalore', label: 'Round-Trip Cab' },
-        { href: '/one-way-cab-bangalore', label: 'One-Way Cab' },
-        { href: '/contact', label: 'Contact Us' }
-      ]}
-    />
+    <section className="section-padding" style={{ background: '#F3F4F6' }}>
+      <div className="container-max">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="section-label">Outstation</p>
+          <h1 className="font-heading font-bold text-[#0F172A]" style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', letterSpacing: '-0.6px', lineHeight: 1.08 }}>
+            Popular Outstation Destinations<br />
+            From Bangalore
+          </h1>
+          <p className="mt-4 text-base" style={{ color: '#475569' }}>
+            Weekend getaways and long drives across Karnataka and nearby states.
+          </p>
+          <div className="mx-auto mt-5 h-1 w-20 rounded-full" style={{ background: '#FBBF24' }} />
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {destinations.map((place) => (
+            <article key={place.name} className="group overflow-hidden rounded-[28px] border border-[#E5E7EB] bg-white shadow-[0_12px_28px_rgba(15,23,42,0.08)] transition-transform duration-200 hover:-translate-y-1"
+              style={{ boxShadow: '0 12px 28px rgba(15,23,42,0.08)' }}>
+              <div className="relative h-[260px] overflow-hidden">
+                <img
+                  src={place.image}
+                  alt={place.name}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.18), rgba(15,23,42,0.7))' }} />
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <h2 className="font-heading font-bold text-3xl text-white" style={{ letterSpacing: '-0.4px' }}>{place.name}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-200">{place.description}</p>
+                  <a
+                    href="https://wa.me/919113052138?text=I%20want%20to%20plan%20a%20trip%20to%20Bangalore%20outstation%20destination"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-all duration-200"
+                    style={{ background: '#FBBF24', color: '#0F172A' }}
+                  >
+                    <span className="text-base">◌</span> Plan Your Trip
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -804,6 +854,8 @@ export default function App() {
     switch (route) {
       case 'airport-taxi-bangalore':
         return <AirportTaxiPage />;
+      case 'our-fleet':
+        return <Vehicles />;
       case 'outstation-cab-bangalore':
         return <OutstationCabPage />;
       case 'one-way-cab-bangalore':

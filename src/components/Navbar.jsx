@@ -5,6 +5,7 @@ import { WHATSAPP_NUMBER, BOOKING_MSG } from '../constants';
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Airport Taxi', href: '/airport-taxi-bangalore' },
+  { label: 'Our Fleet', href: '/our-fleet' },
   { label: 'Local Cab', href: '/local-cab-bangalore' },
   { label: 'Outstation', href: '/outstation-cab-bangalore' },
   { label: 'Corporate', href: '/corporate-cab-service' },
