@@ -157,10 +157,10 @@ export default function Hero() {
 
       {/* ── Main two-column content ── */}
       <div className="container-max relative z-10 flex-1 flex items-center">
-        <div className="grid lg:grid-cols-[55%_45%] gap-8 xl:gap-12 w-full py-12 lg:py-16 items-center">
+        <div className="grid lg:grid-cols-[62%_38%] gap-6 xl:gap-10 w-full py-12 lg:py-16 items-center">
 
           {/* LEFT — headline + trust */}
-          <div className="max-w-lg mx-auto lg:mx-0 text-center lg:text-left animate-slide-up">
+          <div className="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left animate-slide-up">
             {/* Eyebrow */}
             <span className="eyebrow-light">
               <Shield size={11} /> Yellow Board Commercial Cabs · Bangalore
@@ -239,7 +239,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — floating booking card */}
-          <div className="w-full max-w-sm mx-auto lg:ml-16 lg:mr-0" style={{ animation: 'none' }}>
+          <div className="w-full max-w-md mx-auto lg:ml-4 lg:mr-0" style={{ animation: 'none' }}>
             <div className="rounded-[26px] overflow-hidden border border-white/10"
               style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96))', boxShadow: '0 32px 80px rgba(0,0,0,0.45)' }}>
               {/* Card header */}
