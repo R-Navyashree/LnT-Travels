@@ -228,7 +228,7 @@
 @layer utilities {
   .font-heading    { font-family: 'Poppins', system-ui, sans-serif; }
   .section-padding { @apply py-16 md:py-24; animation: fadeUp 0.7s ease-out both; }
-  .container-max   { @apply w-full mx-auto px-10; }
+  .container-max   { @apply w-full max-w-[1440px] mx-auto px-4 md:px-8 lg:px-10; }
 
   .orange-gradient {
     background: linear-gradient(135deg, #FBBF24, #F59E0B);

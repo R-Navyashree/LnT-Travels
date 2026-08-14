@@ -199,26 +199,46 @@ function SEOBottomLineSection() {
       <div className="container-max">
         <div className="rounded-[28px] border border-[#E5E7EB] bg-white p-6 md:p-8 lg:p-10 shadow-[0_12px_40px_rgba(15,23,42,0.05)]">
           <p className="section-label">Bottom line</p>
-          <h2 className="font-heading font-bold mb-4 text-[#0F172A]" style={{ fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', letterSpacing: '-0.4px' }}>
-            Reliable Bangalore cab service for airport transfers, local rides, and business travel.
-          </h2>
-          <p className="mb-4 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
-            LnT Travels is a Bangalore cab service for airport pickups, local commutes, family rides, and outstation travel. If you are wondering how to book a cab in Bangalore quickly, the short answer is simple: send your trip details on WhatsApp or by booking form, and we confirm availability and fare fast.
-          </p>
-          <p className="mb-4 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
-            We help business travelers, families, and corporate teams move with verified drivers, transparent pricing, and dependable schedules. See our <a href="/about" className="font-semibold underline underline-offset-4" style={{ color: '#0F172A' }}>About page</a> or <a href="/airport-taxi-bangalore" className="font-semibold underline underline-offset-4" style={{ color: '#0F172A' }}>Airport Cab Service page</a> for the full picture.
-          </p>
-          <p className="mb-6 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
-            Our fleet includes comfortable sedans and SUVs for airport transfers, local city rides, family travel, and business trips across Bangalore.
-          </p>
 
-          <ul className="grid gap-3 md:grid-cols-3">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.45fr_0.9fr]">
+            <div>
+              <h2 className="font-heading font-bold mb-4 text-[#0F172A]" style={{ fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', letterSpacing: '-0.4px' }}>
+                Reliable Bangalore cab service for airport transfers, local rides, and business travel.
+              </h2>
+              <p className="mb-4 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
+                LnT Travels is a Bangalore cab service for airport pickups, local commutes, family rides, and outstation travel. If you are wondering how to book a cab in Bangalore quickly, the short answer is simple: send your trip details on WhatsApp or by booking form, and we confirm availability and fare fast.
+              </p>
+              <p className="mb-4 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
+                We help business travelers, families, and corporate teams move with verified drivers, transparent pricing, and dependable schedules. See our <a href="/about" className="font-semibold underline underline-offset-4" style={{ color: '#0F172A' }}>About page</a> or <a href="/airport-taxi-bangalore" className="font-semibold underline underline-offset-4" style={{ color: '#0F172A' }}>Airport Cab Service page</a> for the full picture.
+              </p>
+              <p className="mb-0 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
+                Our fleet includes comfortable sedans and SUVs for airport transfers, local city rides, family travel, and business trips across Bangalore.
+              </p>
+            </div>
+
+            <div className="relative">
+              <div className="rounded-[26px] border border-[#E5E7EB] bg-[#F8FAFC] p-3 shadow-[0_10px_28px_rgba(15,23,42,0.08)]">
+                <div className="overflow-hidden rounded-[20px] bg-[#EDF2F7]">
+                  <img
+                    src="/Eritiga.png"
+                    alt="Maruti Ertiga yellow board taxi in Bangalore"
+                    className="h-[220px] w-full object-contain object-center md:h-[260px]"
+                  />
+                </div>
+                <div className="mt-3 flex items-center justify-end">
+                  <span className="rounded-full bg-[#FBBF24] px-2.5 py-1 text-[10px] font-bold uppercase" style={{ color: '#0F172A' }}>Commercial</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ul className="mt-8 grid gap-3 md:grid-cols-3">
             {[
               'Airport transfers with clear pricing and punctual pickup',
               'Local rides and family trips with verified, professional drivers',
               'Corporate bookings and repeat travel support across Bangalore'
             ].map((item) => (
-              <li key={item} className="rounded-2xl border border-[#E5E7EB] bg-[#F8FAFC] p-4 text-sm font-medium list-none" style={{ color: '#0F172A' }}>
+              <li key={item} className="rounded-2xl border border-white/10 bg-[#0D1B2A] p-4 text-sm font-medium list-none" style={{ color: '#F8FAFC', boxShadow: '0 10px 24px rgba(15,23,42,0.14)' }}>
                 {item}
               </li>
             ))}
