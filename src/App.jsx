@@ -25,9 +25,9 @@ const ROUTES = [
 
 const ROUTE_META = {
   home: {
-    title: 'LnT Travels | Cab Service in Bangalore',
+    title: 'Bangalore Cab Service | Airport, Local & Outstation Taxi | LnT Travels',
     description: 'Book reliable cab service in Bangalore with LnT Travels for airport transfers, local rides, one-way trips and outstation travel.',
-    ogTitle: 'LnT Travels | Cab Service in Bangalore',
+    ogTitle: 'Bangalore Cab Service | LnT Travels',
     ogDescription: 'Book reliable cab service in Bangalore with LnT Travels for airport transfers, local rides, one-way trips and outstation travel.'
   },
   'airport-taxi-bangalore': {

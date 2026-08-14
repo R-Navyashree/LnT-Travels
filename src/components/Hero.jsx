@@ -169,8 +169,8 @@ export default function Hero() {
             {/* H1 */}
             <h1 className="font-heading font-bold mt-1 mb-4 text-white"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', letterSpacing: '-0.5px', lineHeight: 1.15 }}>
-              Reliable Bangalore<br />
-              <span className="orange-gradient">Cab Service</span>
+              Reliable Bangalore taxi service<br />
+              <span className="orange-gradient">for airport transfers and city rides</span>
             </h1>
 
             <p className="mb-4 text-slate-400 leading-relaxed max-w-md mx-auto lg:mx-0"
