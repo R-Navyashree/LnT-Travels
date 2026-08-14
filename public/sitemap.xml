@@ -2,8 +2,29 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lnt-travels.vercel.app/</loc>
-    <lastmod>2025-08-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://lnt-travels.vercel.app/airport-taxi-bangalore</loc>
+  </url>
+  <url>
+    <loc>https://lnt-travels.vercel.app/outstation-cab-bangalore</loc>
+  </url>
+  <url>
+    <loc>https://lnt-travels.vercel.app/one-way-cab-bangalore</loc>
+  </url>
+  <url>
+    <loc>https://lnt-travels.vercel.app/local-cab-bangalore</loc>
+  </url>
+  <url>
+    <loc>https://lnt-travels.vercel.app/round-trip-cab-bangalore</loc>
+  </url>
+  <url>
+    <loc>https://lnt-travels.vercel.app/corporate-cab-service</loc>
+  </url>
+  <url>
+    <loc>https://lnt-travels.vercel.app/about</loc>
+  </url>
+  <url>
+    <loc>https://lnt-travels.vercel.app/contact</loc>
   </url>
 </urlset>

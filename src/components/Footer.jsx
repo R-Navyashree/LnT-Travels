@@ -4,15 +4,20 @@ import { MessageCircle } from 'lucide-react';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { WHATSAPP_NUMBER, EMAIL, BOOKING_MSG } from '../constants';
 
-const services = ['Airport Transfers', 'One Way Trips', 'Local Rentals', 'Outstation Tours'];
+const services = [
+  { label: 'Airport Transfers', href: '/airport-taxi-bangalore' },
+  { label: 'One Way Trips', href: '/one-way-cab-bangalore' },
+  { label: 'Local Rentals', href: '/local-cab-bangalore' },
+  { label: 'Outstation Tours', href: '/outstation-cab-bangalore' },
+];
 const quickLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#/about' },
-  { label: 'Cities We Serve', href: '#/cities' },
-  { label: 'Pricing', href: '#/pricing' },
-  { label: 'Corporate Bookings', href: '#/corporate' },
-  { label: 'Services', href: '#services' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'Airport Taxi', href: '/airport-taxi-bangalore' },
+  { label: 'Local Cab', href: '/local-cab-bangalore' },
+  { label: 'Outstation Cab', href: '/outstation-cab-bangalore' },
+  { label: 'Corporate Travel', href: '/corporate-cab-service' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Footer() {
@@ -78,12 +83,12 @@ export default function Footer() {
           <h3 className="font-heading font-bold text-xs tracking-widest uppercase mb-4" style={{ color: '#FBBF24' }}>Services</h3>
           <ul className="space-y-2.5">
             {services.map(s => (
-              <li key={s}>
-                <a href="#services" className="text-xs transition-all duration-150 inline-block"
+              <li key={s.label}>
+                <a href={s.href} className="text-xs transition-all duration-150 inline-block"
                   style={{ color: '#334155' }}
                   onMouseEnter={e => { e.currentTarget.style.color = '#FBBF24'; e.currentTarget.style.transform = 'translateX(3px)'; }}
                   onMouseLeave={e => { e.currentTarget.style.color = '#334155'; e.currentTarget.style.transform = 'translateX(0)'; }}>
-                  {s}
+                  {s.label}
                 </a>
               </li>
             ))}

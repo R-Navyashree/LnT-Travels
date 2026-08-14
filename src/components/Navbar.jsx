@@ -3,13 +3,13 @@ import { Phone, Menu, X, MessageCircle } from 'lucide-react';
 import { WHATSAPP_NUMBER, BOOKING_MSG } from '../constants';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#/about' },
-  { label: 'Cities', href: '#/cities' },
-  { label: 'Pricing', href: '#/pricing' },
-  { label: 'Corporate', href: '#/corporate' },
-  { label: 'Services', href: '#services' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'Airport Taxi', href: '/airport-taxi-bangalore' },
+  { label: 'Local Cab', href: '/local-cab-bangalore' },
+  { label: 'Outstation', href: '/outstation-cab-bangalore' },
+  { label: 'Corporate', href: '/corporate-cab-service' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className="container-max flex items-center justify-between h-[88px]">
 
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2.5 flex-shrink-0">
+          <a href="/" className="flex items-center gap-2.5 flex-shrink-0">
             <div className="w-[68px] h-[50px] rounded-2xl overflow-hidden border-2 flex-shrink-0"
               style={{ borderColor: '#0f172a' }}>
               <img src="/logo.png" alt="LnT Travels" className="w-full h-full object-cover" />
