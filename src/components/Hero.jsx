@@ -168,7 +168,7 @@ export default function Hero() {
 
             {/* Short answer / summary */}
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#FBBF24]">
-              Short answer: LnT Travels provides reliable airport pickups, local city rides, and outstation cabs across Bangalore.
+              LnT Travels provides reliable airport pickups, local city rides, and outstation cabs across Bangalore.
             </p>
 
             {/* H1 */}

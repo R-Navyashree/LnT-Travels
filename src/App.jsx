@@ -136,12 +136,12 @@ function TestimonialsSection() {
       quote: 'Had a wonderful experience with L&T Travels! The service was excellent from start to finish. The journey was comfortable, well-organized, and smooth, making it a great choice for travelling with family and friends. The staff were friendly and professional, the arrangements were well managed, and the overall experience was hassle-free. I especially appreciated the comfort, punctuality, and attention to customer needs. Highly recommended for anyone looking for a safe, comfortable, and reliable travel experience with family or friends. Would definitely choose L&T Travels again for my future trips!'
     },
     {
-      name: 'Manjunatha A',
-      quote: 'I recently used L&T Travel and had an absolutely wonderful experience. Their service was highly professional, efficient, and well-organized from start to finish. The itinerary was perfectly planned, and their team was incredibly supportive throughout the journey. I highly recommend L&T Travel to anyone looking for a hassle-free and memorable travel experience. Thank you for the outstanding service!'
-    },
-    {
       name: 'Shashank Shetty',
       quote: 'Had a great experience with L&T Travels! The service was excellent, the journey was comfortable, and everything was well organised. The staff were friendly and helpful throughout the trip. I highly recommend L&T Travels for anyone looking for a safe, comfortable, and reliable travel experience. Looking forward to travelling with them again!'
+    },
+    {
+      name: 'Manjunatha A',
+      quote: 'I recently used L&T Travel and had an absolutely wonderful experience. Their service was highly professional, efficient, and well-organized from start to finish. The itinerary was perfectly planned, and their team was incredibly supportive throughout the journey. I highly recommend L&T Travel to anyone looking for a hassle-free and memorable travel experience. Thank you for the outstanding service!'
     }
   ];
 
