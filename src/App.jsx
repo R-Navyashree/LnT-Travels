@@ -25,9 +25,9 @@ const ROUTES = [
 
 const ROUTE_META = {
   home: {
-    title: 'Bangalore Taxi Service | Airport & Local Cabs',
+    title: 'Bangalore Airport Taxi & Local Cabs | LnT Travels',
     description: 'Book reliable cab service in Bangalore with LnT Travels for airport transfers, local rides, one-way trips and outstation travel.',
-    ogTitle: 'Bangalore Taxi Service | LnT Travels',
+    ogTitle: 'Bangalore Airport Taxi & Local Cabs | LnT Travels',
     ogDescription: 'Book reliable cab service in Bangalore with LnT Travels for airport transfers, local rides, one-way trips and outstation travel.'
   },
   'airport-taxi-bangalore': {
@@ -205,6 +205,19 @@ function SEOBottomLineSection() {
               <h2 className="font-heading font-bold mb-4 text-[#0F172A]" style={{ fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', letterSpacing: '-0.4px' }}>
                 Reliable Bangalore cab service for airport transfers, local rides, and business travel.
               </h2>
+
+              <div className="mb-5 flex flex-wrap gap-2">
+                {[
+                  '24/7 support',
+                  '5.0/5 from 52 Google reviews',
+                  'Airport, local & outstation trips'
+                ].map((stat) => (
+                  <span key={stat} className="inline-flex items-center rounded-full border border-[#E5E7EB] bg-[#F8FAFC] px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: '#0F172A' }}>
+                    {stat}
+                  </span>
+                ))}
+              </div>
+
               <p className="mb-4 max-w-4xl text-base leading-relaxed" style={{ color: '#475569' }}>
                 LnT Travels is a Bangalore cab service for airport pickups, local commutes, family rides, and outstation travel. If you are wondering how to book a cab in Bangalore quickly, the short answer is simple: send your trip details on WhatsApp or by booking form, and we confirm availability and fare fast.
               </p>

@@ -169,14 +169,17 @@ export default function Hero() {
             {/* H1 */}
             <h1 className="font-heading font-bold mt-1 mb-4 text-white"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', letterSpacing: '-0.5px', lineHeight: 1.15 }}>
-              Bangalore taxi service<br />
+              Bangalore airport taxi service<br />
               <span className="orange-gradient">for airport transfers and city rides</span>
             </h1>
 
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#FBBF24]">
+              Key takeaway: reliable airport, local, and outstation cabs across Bangalore.
+            </p>
+
             <p className="mb-4 text-slate-400 leading-relaxed max-w-md mx-auto lg:mx-0"
               style={{ fontSize: 'clamp(0.88rem, 1.6vw, 1rem)' }}>
-              Airport transfers, local rides, one-way trips, and outstation travel —
-              professional drivers, clean vehicles, transparent fares. Always on time.
+              Airport transfers, local rides, one-way trips, and outstation travel — professional drivers, clean vehicles, transparent fares, and 24/7 support.
             </p>
 
             <p className="mb-8 max-w-md mx-auto lg:mx-0 text-slate-200 leading-relaxed"
