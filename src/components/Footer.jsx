@@ -6,12 +6,13 @@ import { WHATSAPP_NUMBER, EMAIL, BOOKING_MSG } from '../constants';
 
 const services = ['Airport Transfers', 'One Way Trips', 'Local Rentals', 'Outstation Tours'];
 const quickLinks = [
-  { label: 'Home',         href: '#home' },
-  { label: 'About',        href: '#about' },
-  { label: 'Our Vehicles', href: '#vehicles' },
-  { label: 'Services',     href: '#services' },
-  { label: 'Destinations', href: '#destinations' },
-  { label: 'Contact',      href: '#contact' },
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#/about' },
+  { label: 'Cities We Serve', href: '#/cities' },
+  { label: 'Pricing', href: '#/pricing' },
+  { label: 'Corporate Bookings', href: '#/corporate' },
+  { label: 'Services', href: '#services' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Footer() {
@@ -57,7 +58,7 @@ export default function Footer() {
 
         {/* Quick links */}
         <div>
-          <h4 className="font-heading font-bold text-xs tracking-widest uppercase mb-4" style={{ color: '#FBBF24' }}>Quick Links</h4>
+          <h3 className="font-heading font-bold text-xs tracking-widest uppercase mb-4" style={{ color: '#FBBF24' }}>Quick Links</h3>
           <ul className="space-y-2.5">
             {quickLinks.map(l => (
               <li key={l.label}>
@@ -74,7 +75,7 @@ export default function Footer() {
 
         {/* Services */}
         <div>
-          <h4 className="font-heading font-bold text-xs tracking-widest uppercase mb-4" style={{ color: '#FBBF24' }}>Services</h4>
+          <h3 className="font-heading font-bold text-xs tracking-widest uppercase mb-4" style={{ color: '#FBBF24' }}>Services</h3>
           <ul className="space-y-2.5">
             {services.map(s => (
               <li key={s}>
@@ -91,7 +92,7 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <h4 className="font-heading font-bold text-xs tracking-widest uppercase mb-4" style={{ color: '#FBBF24' }}>Contact</h4>
+          <h3 className="font-heading font-bold text-xs tracking-widest uppercase mb-4" style={{ color: '#FBBF24' }}>Contact</h3>
           <ul className="space-y-3.5">
             <li>
               <a href="tel:+919113052138" className="flex items-center gap-2.5 text-xs transition-colors duration-150"

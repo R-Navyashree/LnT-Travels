@@ -2,47 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ══════════════════════════════════════════════════════
+   DESIGN TOKENS
+   ══════════════════════════════════════════════════════ */
 :root {
+  /* ── Backgrounds ── */
   --background:        #ffffff;
   --background-alt:    #f8fafc;
   --background-muted:  #f1f5f9;
+
+  /* ── Text ── */
   --foreground:        #0f172a;
   --foreground-muted:  #64748b;
   --foreground-subtle: #94a3b8;
+
+  /* ── Dark sections ── */
   --navy:              #0D1B2A;
   --navy-card:         #1e293b;
+
+  /* ── Primary / accent — yellow ── */
   --primary:           #FBBF24;
   --primary-dark:      #F59E0B;
   --primary-light:     #FEF3C7;
   --primary-foreground:#0f172a;
+
+  /* ── Card ── */
   --card:              #ffffff;
   --card-foreground:   #0f172a;
   --card-border:       #e2e8f0;
+
+  /* ── Border ── */
   --border:            #e2e8f0;
   --border-light:      #f1f5f9;
+
+  /* ── Form inputs ── */
   --input-border:      #cbd5e1;
   --input-focus:       #FBBF24;
   --input-error:       #ef4444;
+
+  /* ── Shadow ── */
   --shadow-sm:  0 1px 2px rgba(15,23,42,0.05);
   --shadow-md:  0 4px 16px rgba(15,23,42,0.07);
   --shadow-lg:  0 12px 40px rgba(15,23,42,0.10);
   --shadow-xl:  0 24px 60px rgba(15,23,42,0.13);
+
+  /* ── Radius ── */
   --radius:     0.5rem;
   --radius-lg:  0.75rem;
   --radius-xl:  1rem;
   --radius-2xl: 1.25rem;
 }
 
+/* ══════════════════════════════════════════════════════
+   BASE RESET & TYPOGRAPHY
+   ══════════════════════════════════════════════════════ */
 @layer base {
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 16px; }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
   body {
     font-family: 'Poppins', system-ui, -apple-system, sans-serif;
     background-color: var(--background);
     color: var(--foreground);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
   h1, h2, h3, h4, h5 {
     font-family: 'Poppins', system-ui, sans-serif;
     color: var(--foreground);
@@ -50,14 +84,24 @@
     line-height: 1.2;
     letter-spacing: -0.3px;
   }
+
   p { color: var(--foreground-muted); }
+
   a { text-decoration: none; }
+
   img, video { max-width: 100%; display: block; }
 }
 
+/* ══════════════════════════════════════════════════════
+   COMPONENT CLASSES
+   ══════════════════════════════════════════════════════ */
 @layer components {
+
+  /* ── Buttons ── */
   .btn-orange {
-    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm px-6 py-3 rounded-lg min-h-[46px] tracking-wide transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm
+      px-6 py-3 rounded-lg min-h-[46px] tracking-wide
+      transition-all duration-200;
     background: var(--primary);
     color: #0f172a;
     box-shadow: 0 4px 14px rgba(251,191,36,0.35);
@@ -67,49 +111,79 @@
     transform: translateY(-1px);
     box-shadow: 0 8px 20px rgba(251,191,36,0.45);
   }
+
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm px-5 py-2.5 rounded-lg transition-all duration-200 min-h-[44px];
+    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm
+      px-5 py-2.5 rounded-lg transition-all duration-200 min-h-[44px];
     border: 1.5px solid rgba(255,255,255,0.3);
     color: rgba(255,255,255,0.9);
   }
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: #fff; background: rgba(255,255,255,0.05); }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.7);
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+  }
+
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm px-5 py-2.5 rounded-lg transition-all duration-200 min-h-[44px];
+    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm
+      px-5 py-2.5 rounded-lg transition-all duration-200 min-h-[44px];
     border: 1.5px solid var(--border);
     color: #374151;
   }
-  .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+  .btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* ── Form Elements ── */
   .form-input {
-    @apply w-full h-11 px-3 text-sm rounded-lg outline-none transition-all duration-200 border bg-white text-gray-800 placeholder-gray-400;
+    @apply w-full h-11 px-3 text-sm rounded-lg outline-none transition-all duration-200
+      border bg-white text-gray-800 placeholder-gray-400;
     border-color: var(--input-border);
     font-family: 'Poppins', system-ui, sans-serif;
   }
-  .form-input:focus { border-color: var(--input-focus); box-shadow: 0 0 0 3px rgba(251,191,36,0.15); }
-  .form-input.error { border-color: var(--input-error); box-shadow: 0 0 0 3px rgba(239,68,68,0.08); }
-  .section-pill, .eyebrow {
-    @apply inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3;
+  .form-input:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px rgba(251,191,36,0.15);
+  }
+  .form-input.error {
+    border-color: var(--input-error);
+    box-shadow: 0 0 0 3px rgba(239,68,68,0.08);
+  }
+
+  /* ── Section Labels / Eyebrows ── */
+  .section-pill,
+  .eyebrow {
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest
+      px-3 py-1.5 rounded-full mb-3;
     background: rgba(251,191,36,0.1);
     color: var(--primary);
     border: 1px solid rgba(251,191,36,0.2);
   }
+
   .eyebrow-light {
-    @apply inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3;
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest
+      px-3 py-1.5 rounded-full mb-3;
     background: rgba(251,191,36,0.15);
     color: #FBBF24;
     border: 1px solid rgba(251,191,36,0.3);
   }
+
+  /* ── Section Headings ── */
   .section-title {
     @apply font-heading font-bold leading-tight mb-3;
     font-size: clamp(1.6rem, 3.8vw, 2.6rem);
     color: var(--foreground);
     letter-spacing: -0.3px;
   }
+
   .section-subtitle {
     @apply max-w-2xl mx-auto;
     font-size: clamp(0.9rem, 1.8vw, 1rem);
     color: var(--foreground-muted);
     line-height: 1.75;
   }
+
   .section-label {
     display: block;
     font-size: 0.7rem;
@@ -119,6 +193,8 @@
     color: var(--primary);
     margin-bottom: 0.5rem;
   }
+
+  /* ── Cards ── */
   .card {
     background: var(--card);
     border: 1px solid var(--border-light);
@@ -126,7 +202,12 @@
     box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 16px rgba(15,23,42,0.04);
     transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
   }
-  .card:hover { box-shadow: 0 8px 32px rgba(15,23,42,0.1); border-color: rgba(251,191,36,0.25); transform: translateY(-4px); }
+  .card:hover {
+    box-shadow: 0 8px 32px rgba(15,23,42,0.1);
+    border-color: rgba(251,191,36,0.25);
+    transform: translateY(-4px);
+  }
+
   .premium-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -134,36 +215,82 @@
     box-shadow: 0 4px 16px rgba(15,23,42,0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
-  .premium-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(15,23,42,0.12); border-color: rgba(251,191,36,0.3); }
+  .premium-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(15,23,42,0.12);
+    border-color: rgba(251,191,36,0.3);
+  }
 }
 
+/* ══════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ══════════════════════════════════════════════════════ */
 @layer utilities {
   .font-heading    { font-family: 'Poppins', system-ui, sans-serif; }
   .section-padding { @apply py-16 md:py-24; }
-  .container-max   { width: 100%; max-width: 1440px; margin-left: auto; margin-right: auto; padding-left: 40px; padding-right: 40px; }
+  .container-max   { @apply w-full mx-auto px-10; }
+
   .orange-gradient {
     background: linear-gradient(135deg, #FBBF24, #F59E0B);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
   .bg-light { background: var(--background-alt); }
   .bg-navy  { background: var(--navy); }
 }
 
+/* ══════════════════════════════════════════════════════
+   SCROLLBAR
+   ══════════════════════════════════════════════════════ */
 ::-webkit-scrollbar        { width: 4px; }
 ::-webkit-scrollbar-track  { background: var(--background-alt); }
 ::-webkit-scrollbar-thumb  { background: var(--primary); border-radius: 2px; }
 
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+/* ══════════════════════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS
+   ══════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
 .reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
 .reveal-left.visible { opacity: 1; transform: translateX(0); }
-.reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
 .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
 .delay-100 { transition-delay: 0.10s; }
 .delay-150 { transition-delay: 0.15s; }
 .delay-200 { transition-delay: 0.20s; }
 .delay-300 { transition-delay: 0.30s; }
 .delay-400 { transition-delay: 0.40s; }
 .delay-500 { transition-delay: 0.50s; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE CONTAINER PADDING
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .container-max { padding-left: 16px; padding-right: 16px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container-max { padding-left: 24px; padding-right: 24px; }
+}
+@media (min-width: 1024px) {
+  .container-max { padding-left: 40px; padding-right: 40px; }
+}
+@media (min-width: 1280px) {
+  .container-max { padding-left: 48px; padding-right: 48px; }
+}

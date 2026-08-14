@@ -66,7 +66,7 @@ export default function Contact() {
                   style={{ background: 'rgba(251,191,36,0.1)', color: '#FBBF24' }}>
                   <Clock size={16} />
                 </div>
-                <h4 className="font-heading font-bold text-sm" style={{ color: '#0F172A' }}>Business Hours</h4>
+                <h3 className="font-heading font-bold text-sm" style={{ color: '#0F172A' }}>Business Hours</h3>
               </div>
               <div className="space-y-2.5">
                 {hours.map(h => (
@@ -97,7 +97,7 @@ export default function Contact() {
             <div className="bg-[#0D1B2A] rounded-2xl p-6 text-center relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
                 style={{ background: 'linear-gradient(to right, #FBBF24, #F59E0B)' }} />
-              <h4 className="font-heading font-bold text-lg text-white mb-1">Book via WhatsApp</h4>
+              <h3 className="font-heading font-bold text-lg text-white mb-1">Book via WhatsApp</h3>
               <p className="text-xs text-slate-400 mb-4">Send trip details — instant confirmation.</p>
               <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${BOOKING_MSG}`}
                 target="_blank" rel="noopener noreferrer"

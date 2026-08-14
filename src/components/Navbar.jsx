@@ -3,11 +3,13 @@ import { Phone, Menu, X, MessageCircle } from 'lucide-react';
 import { WHATSAPP_NUMBER, BOOKING_MSG } from '../constants';
 
 const navLinks = [
-  { label: 'Home',         href: '#home' },
-  { label: 'About',        href: '#about' },
-  { label: 'Vehicles',     href: '#vehicles' },
-  { label: 'Services',     href: '#services' },
-  { label: 'Contact',      href: '#contact' },
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#/about' },
+  { label: 'Cities', href: '#/cities' },
+  { label: 'Pricing', href: '#/pricing' },
+  { label: 'Corporate', href: '#/corporate' },
+  { label: 'Services', href: '#services' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
