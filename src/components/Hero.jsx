@@ -182,6 +182,21 @@ export default function Hero() {
               Key takeaway: 24/7 support, verified drivers, and 52 Google reviews for dependable travel across Bangalore.
             </p>
 
+            <div className="mb-4 grid grid-cols-3 gap-2 max-w-md mx-auto lg:mx-0">
+              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-2 text-center">
+                <div className="text-lg font-bold text-white">24/7</div>
+                <div className="text-[10px] uppercase tracking-[0.12em] text-slate-300">Support</div>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-2 text-center">
+                <div className="text-lg font-bold text-white">52+</div>
+                <div className="text-[10px] uppercase tracking-[0.12em] text-slate-300">Reviews</div>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-2 text-center">
+                <div className="text-lg font-bold text-white">100%</div>
+                <div className="text-[10px] uppercase tracking-[0.12em] text-slate-300">Verified</div>
+              </div>
+            </div>
+
             <p className="mb-4 text-slate-400 leading-relaxed max-w-md mx-auto lg:mx-0"
               style={{ fontSize: 'clamp(0.88rem, 1.6vw, 1rem)' }}>
               Airport transfers, local rides, one-way trips, and outstation travel — professional drivers, clean vehicles, transparent fares, and dependable support from pickup to drop.
