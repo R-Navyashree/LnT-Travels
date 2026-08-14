@@ -174,8 +174,8 @@ export default function Hero() {
             {/* H1 */}
             <h1 className="font-heading font-bold mt-1 mb-4 text-white"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', letterSpacing: '-0.5px', lineHeight: 1.15 }}>
-              Trusted Bangalore cab service<br />
-              <span className="orange-gradient">for airport pickups and city rides</span>
+              Bangalore airport taxi & local cabs<br />
+              <span className="orange-gradient">for reliable pickups and city rides</span>
             </h1>
 
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#FBBF24]">
